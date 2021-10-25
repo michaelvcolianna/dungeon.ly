@@ -1,7 +1,9 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <a href="/">
+                <x-svg.deltohedron class="h-16 w-16 text-red-700" />
+            </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
