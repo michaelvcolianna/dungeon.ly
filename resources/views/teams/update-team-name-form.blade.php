@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name="description">
-        {{ __('The Game\'s name and information.') }}
+        {{ __('The game\'s name and information.') }}
     </x-slot>
 
     <x-slot name="form">
