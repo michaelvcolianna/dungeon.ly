@@ -21,7 +21,7 @@ class JetstreamServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        Jetstream::ignoreRoutes();
     }
 
     /**
@@ -51,10 +51,20 @@ class JetstreamServiceProvider extends ServiceProvider
     {
         Jetstream::defaultApiTokenPermissions(['read']);
 
-        Jetstream::role('player', 'Player', [
+        // Not needed
+        /*
+        Jetstream::role('admin', 'Administrator', [
+            'create',
+            'read',
+            'update',
+            'delete',
+        ])->description('Administrator users can perform any action.');
+
+        Jetstream::role('editor', 'Editor', [
             'read',
             'create',
             'update',
-        ])->description('Players are members of a campaign.');
+        ])->description('Editor users have the ability to read, create, and update.');
+        */
     }
 }
