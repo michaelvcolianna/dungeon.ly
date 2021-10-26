@@ -60,4 +60,12 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Get the D&D characters for the user.
+     */
+    public function dnd_characters()
+    {
+        return $this->hasMany(DndCharacter::class);
+    }
 }
