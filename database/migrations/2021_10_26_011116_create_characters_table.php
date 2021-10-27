@@ -22,10 +22,9 @@ class CreateCharactersTable extends Migration
             $table->softDeletes();
 
             // Character information
-            $table->string('character_name')->nullable();
+            $table->string('name')->nullable();
             $table->string('class_level')->nullable();
             $table->string('background')->nullable();
-            $table->string('player_name')->nullable();
             $table->string('race')->nullable();
             $table->string('alignment')->nullable();
             $table->string('experience_points')->nullable();
