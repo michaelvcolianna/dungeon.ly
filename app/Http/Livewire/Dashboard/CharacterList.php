@@ -85,7 +85,6 @@ class CharacterList extends Component
     {
         if($character = Character::find($id))
         {
-            // @todo Add real character view route
             return redirect()->route('character.view', ['character' => $character]);
         }
 
