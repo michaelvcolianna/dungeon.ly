@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name="description">
-        Update your account\'s profile information and email address.
+        Update your account's profile information and email address.
     </x-slot>
 
     <x-slot name="form">

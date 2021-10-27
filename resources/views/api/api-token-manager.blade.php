@@ -101,7 +101,7 @@
 
         <x-slot name="content">
             <div>
-                Please copy your new API token. For your security, it won\'t be shown again.
+                Please copy your new API token. For your security, it won't be shown again.
             </div>
 
             <x-jet-input x-ref="plaintextToken" type="text" readonly :value="$plainTextToken"

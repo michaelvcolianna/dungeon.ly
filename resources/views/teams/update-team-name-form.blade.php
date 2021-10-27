@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name="description">
-        The game\'s name and information.
+        The game's name and information.
     </x-slot>
 
     <x-slot name="form">
