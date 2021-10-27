@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DndCharacter extends Model
+class Character extends Model
 {
     use HasFactory;
 
@@ -20,6 +20,14 @@ class DndCharacter extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    /**
+     * Get the team that the D&D character belongs to.
+     */
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 
     /**
      * Get the user that owns the D&D character.

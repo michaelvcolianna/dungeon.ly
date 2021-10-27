@@ -62,10 +62,10 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * Get the D&D characters for the user.
+     * Get the characters for the user.
      */
-    public function dnd_characters()
+    public function characters()
     {
-        return $this->hasMany(DndCharacter::class);
+        return $this->hasMany(Character::class);
     }
 }

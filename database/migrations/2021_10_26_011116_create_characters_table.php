@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDndCharactersTable extends Migration
+class CreateCharactersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateDndCharactersTable extends Migration
      */
     public function up()
     {
-        Schema::create('dnd_characters', function (Blueprint $table) {
+        Schema::create('characters', function (Blueprint $table) {
             // Bookkeeping
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('team_id');
             $table->timestamps();
             $table->softDeletes();
 
@@ -113,6 +114,6 @@ class CreateDndCharactersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dnd_characters');
+        Schema::dropIfExists('characters');
     }
 }

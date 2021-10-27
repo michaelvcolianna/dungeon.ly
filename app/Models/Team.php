@@ -41,4 +41,12 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
+
+    /**
+     * Get the characters for the team.
+     */
+    public function characters()
+    {
+        return $this->hasMany(Character::class);
+    }
 }
