@@ -5,19 +5,19 @@ namespace App\Http\Livewire\Character;
 use App\Models\Character;
 use Livewire\Component;
 
-class NameField extends Component
+class Details extends Component
 {
     /**
      * The character.
      *
-     * @param  \Illuminate\Database\Eloquent\Collection
+     * @var \App\Models\Character
      */
-    public $character;
+    public Character $character;
 
     /**
      * Validation rules.
      *
-     * @param  array
+     * @var array
      */
     protected $rules = [
         'character.name' => 'nullable|string',
@@ -30,16 +30,20 @@ class NameField extends Component
      */
     public function render()
     {
-        return view('livewire.character.name-field');
+        return view('livewire.character.details');
     }
 
     /**
-     * Action to take on the name update.
+     * Take action(s) on update.
+     *
+     * @param  mixed  $name
+     * @param  mixed  $value
+     * @return void
      */
-    public function updatedCharacterName($value)
+    public function updated($name, $value)
     {
-        $this->validate();
-
         $this->character->save();
+
+        $this->emit('updatedCharacter');
     }
 }
