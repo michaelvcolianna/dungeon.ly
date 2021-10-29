@@ -8,9 +8,12 @@
     </x-slot>
 
     <x-slot name="content">
-        <div>
+        <div class="grid grid-cols-1 gap-4">
             <x-fields.text id="character.name" label="Name" />
             <x-fields.text id="character.class_level" label="Class & Level" />
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-4">
             <x-fields.text id="character.background" label="Background" />
             <x-fields.text id="character.race" label="Race" />
             <x-fields.text id="character.alignment" label="Alignment" />
@@ -21,6 +24,9 @@
             <x-fields.text id="character.eyes" label="Eyes" />
             <x-fields.text id="character.skin" label="Skin" />
             <x-fields.text id="character.hair" label="Hair" />
+        </div>
+
+        <div class="mt-4 grid grid-cols-1 gap-4">
             <x-fields.textarea id="character.personality_traits" label="Personality Traits" />
             <x-fields.textarea id="character.ideals" label="Ideals" />
             <x-fields.textarea id="character.bonds" label="Bonds" />
