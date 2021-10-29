@@ -2,26 +2,22 @@
 
 namespace App\Http\Livewire\Character;
 
-use App\Models\Character;
+use App\Traits\HasACharacter;
 use Livewire\Component;
 
 class Details extends Component
 {
-    /**
-     * The character.
-     *
-     * @var \App\Models\Character
-     */
-    public Character $character;
+    use HasACharacter;
 
     /**
      * Validation rules.
      *
-     * @var array
+     * @return array
      */
-    protected $rules = [
-        'character.name' => 'nullable|string',
-    ];
+    protected function rules()
+    {
+        return array_fill_keys($this->fields, 'nullable');
+    }
 
     /**
      * Get the view / contents that represent the component.
@@ -42,8 +38,16 @@ class Details extends Component
      */
     public function updated($name, $value)
     {
+        if(empty($value))
+        {
+            data_set($this, $name, null);
+        }
+
         $this->character->save();
 
-        $this->emit('updatedCharacter');
+        if($name === 'character.name')
+        {
+            $this->emit('characterUpdated');
+        }
     }
 }

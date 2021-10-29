@@ -38,12 +38,13 @@ class CreateCharactersTable extends Migration
             $table->text('ideals')->nullable();
             $table->text('bonds')->nullable();
             $table->text('flaws')->nullable();
+            $table->text('other_proficiencies_languages')->nullable();
             $table->text('features_traits')->nullable();
-            $table->string('character_appearance', 2048)->nullable();
+            $table->string('appearance', 2048)->nullable();
             $table->text('allies_organizations')->nullable();
             $table->string('affiliation')->nullable();
             $table->string('symbol', 2048)->nullable();
-            $table->text('character_backstory')->nullable();
+            $table->text('backstory')->nullable();
             $table->text('additional_features_traits')->nullable();
 
             // Attributes
@@ -54,7 +55,6 @@ class CreateCharactersTable extends Migration
             $table->json('wisdom')->nullable();
             $table->json('charisma')->nullable();
             $table->string('passive_wisdom')->nullable();
-            $table->text('other_proficiencies_languages')->nullable();
             $table->string('inspiration')->nullable();
             $table->string('proficiency_bonus')->nullable();
             $table->json('strength_saving_throw')->nullable();

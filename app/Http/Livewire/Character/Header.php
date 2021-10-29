@@ -2,17 +2,12 @@
 
 namespace App\Http\Livewire\Character;
 
-use App\Models\Character;
+use App\Traits\HasACharacter;
 use Livewire\Component;
 
 class Header extends Component
 {
-    /**
-     * The character.
-     *
-     * @var \App\Models\Character
-     */
-    public Character $character;
+    use HasACharacter;
 
     /**
      * Events the component listens for.
@@ -20,7 +15,7 @@ class Header extends Component
      * @var array
      */
     protected $listeners = [
-        'updatedCharacter' => '$refresh',
+        'characterUpdated' => '$refresh',
     ];
 
     /**
