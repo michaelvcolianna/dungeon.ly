@@ -33,10 +33,10 @@
             <x-fields.textarea id="character.flaws" label="Flaws" />
             <x-fields.textarea id="character.other_proficiencies_languages" label="Other Proficiencies & Languages" rows="10" />
             <x-fields.textarea id="character.features_traits" label="Features & Traits" rows="25" />
-            <x-fields.text id="character.appearance" label="Appearance" />
+            <x-fields.file-upload id="appearance" label="Appearance" :character="$character" />
             <x-fields.textarea id="character.allies_organizations" label="Allies & Organizations" rows="10" />
             <x-fields.text id="character.affiliation" label="Group Affiliation" />
-            <x-fields.text id="character.symbol" label="Symbol" />
+            <x-fields.file-upload id="symbol" label="Symbol" :character="$character" />
             <x-fields.textarea id="character.backstory" label="Backstory" rows="25" />
             <x-fields.textarea id="character.additional_features_traits" label="Additional Features & Traits" rows="10" />
         </div>
