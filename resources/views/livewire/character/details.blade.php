@@ -9,6 +9,7 @@
 
     <x-slot name="content">
         <div class="grid grid-cols-1 gap-4">
+            <x-fields.file-upload id="appearance" label="Appearance" :character="$character" />
             <x-fields.text id="character.name" label="Name" />
             <x-fields.text id="character.class_level" label="Class & Level" />
         </div>
@@ -31,14 +32,21 @@
             <x-fields.textarea id="character.ideals" label="Ideals" />
             <x-fields.textarea id="character.bonds" label="Bonds" />
             <x-fields.textarea id="character.flaws" label="Flaws" />
+            <x-fields.textarea id="character.backstory" label="Backstory" rows="25" />
             <x-fields.textarea id="character.other_proficiencies_languages" label="Other Proficiencies & Languages" rows="10" />
             <x-fields.textarea id="character.features_traits" label="Features & Traits" rows="25" />
-            <x-fields.file-upload id="appearance" label="Appearance" :character="$character" />
-            <x-fields.textarea id="character.allies_organizations" label="Allies & Organizations" rows="10" />
-            <x-fields.text id="character.affiliation" label="Group Affiliation" />
-            <x-fields.file-upload id="symbol" label="Symbol" :character="$character" />
-            <x-fields.textarea id="character.backstory" label="Backstory" rows="25" />
             <x-fields.textarea id="character.additional_features_traits" label="Additional Features & Traits" rows="10" />
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 gap-4">
+                <x-fields.text id="character.affiliation" label="Group Affiliation" />
+                <x-fields.file-upload id="symbol" label="Symbol" :character="$character" />
+            </div>
+
+            <div>
+                <x-fields.textarea id="character.allies_organizations" label="Allies & Organizations" rows="11" />
+            </div>
         </div>
     </x-slot>
 </x-jet-action-section>
