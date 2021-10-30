@@ -4,24 +4,28 @@ namespace App\View\Components\Shared;
 
 use Illuminate\View\Component;
 
-class Link extends Component
+/**
+ * @note This component has a named slot in the view that isn't part of this
+ * class but is optional.
+ */
+class CollapsibleSection extends Component
 {
     /**
-     * The link text.
+     * The section text for the clickable summary.
      *
      * @var string
      */
-    public $label;
+    public $summary;
 
     /**
      * Create a new component instance.
      *
-     * @param  string  $label
+     * @param  string  $summary
      * @return void
      */
-    public function __construct($label = null)
+    public function __construct($summary)
     {
-        $this->label = $label;
+        $this->summary = $summary;
     }
 
     /**
@@ -31,6 +35,6 @@ class Link extends Component
      */
     public function render()
     {
-        return view('components.shared.link');
+        return view('components.shared.collapsible-section');
     }
 }

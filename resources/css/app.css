@@ -1,3 +1,39 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+details
+{
+    user-select: none;
+}
+
+details summary svg
+{
+    transform: rotate(90deg);
+}
+
+details[open] summary svg
+{
+    transform: rotate(-90deg);
+}
+
+@media (min-width: 640px)
+{
+    #allies_organizations textarea
+    {
+        height: 19em;
+    }
+}
+
+@media (min-width: 1280px)
+{
+    #allies_organizations
+    {
+        margin-top: 2.375em;
+    }
+
+    #allies_organizations textarea
+    {
+        height: 57.5em;
+    }
+}

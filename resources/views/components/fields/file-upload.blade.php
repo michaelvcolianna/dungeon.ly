@@ -1,45 +1,60 @@
-@props(['id', 'label', 'character'])
+<div {{ $attributes }}>
+    <input type="hidden" wire:model="{{ $wireModel }}" />
 
-<div>
-    <input type="hidden" wire:model="character.{{ $id }}" />
-
-    <div x-data="{ {{ $id }}Name: null, {{ $id }}Preview: null }">
+    <div x-data="
+        {
+            {{ $alpineName }}: null,
+            {{ $alpinePreview }}: null,
+            label: {{ $alpineLabel }}
+        }"
+    >
         <label
-            for="{{ $id }}"
-            {{ $attributes->merge(['class' => 'block font-medium text-sm text-gray-700']) }}
+            for="{{ $field }}" x-show="label"
+            class="block font-medium text-center text-sm text-gray-700"
         >
             {{ $label }}
         </label>
 
         <input
-            type="file" wire:model="{{ $id }}" class="hidden" x-ref="{{ $id }}"
-            x-on:change="
-                {{ $id }}Name = $refs.{{ $id }}.files[0].name;
+            type="file" wire:model="{{ $field }}" class="hidden"
+            x-ref="{{ $field }}" x-on:change="
+                {{ $alpineName }} = {{ $alpineRef }}.files[0].name;
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    {{ $id }}Preview = e.target.result;
+                    {{ $alpinePreview }} = e.target.result;
                 };
-                reader.readAsDataURL($refs.{{ $id }}.files[0]);
+                reader.readAsDataURL({{ $alpineRef }}.files[0]);
             "
         />
 
-        <div x-show="! {{ $id }}Preview" class="my-4">
-            <img src="{{ $character->getImage($id) }}" alt="" class="rounded-full h-40 w-40 object-cover" />
+        <div x-show="! {{ $alpinePreview }}" class="my-4 mx-auto h-40 w-40">
+            <img
+                src="{{ $src }}" alt=""
+                class="rounded-full h-full w-full object-cover"
+            />
         </div>
 
-        <div x-show="{{ $id }}Preview" class="my-4">
+        <div x-show="{{ $alpinePreview }}" class="my-4 mx-auto h-40 w-40">
             <span
-                class="block rounded-full w-40 h-40 bg-cover bg-no-repeat bg-center"
-                x-bind:style="'background-image: url(\'' + {{ $id }}Preview + '\');'"
+                class="block rounded-full w-full h-full bg-cover bg-no-repeat bg-center"
+                x-bind:style="
+                    'background-image: url(\'' + {{ $alpinePreview }} + '\');'
+                "
             ></span>
         </div>
 
-        <div class="flex flex-row">
-            @if($character->{$id})
-                <x-jet-secondary-button class="mr-4" wire:click="removeImage('{{ $id }}')">Remove Current Image</x-jet-button>
+        <div class="flex flex-row justify-center">
+            @if($character->{$field})
+                <x-jet-secondary-button
+                    class="mr-4" wire:click="removeImage('{{ $field }}')"
+                >
+                    Remove
+                </x-jet-button>
             @endif
 
-            <x-jet-secondary-button x-on:click="$refs.{{ $id }}.click()">Choose New Image</x-jet-button>
+            <x-jet-secondary-button x-on:click="{{ $alpineRef }}.click()">
+                Choose
+            </x-jet-button>
         </div>
     </div>
 </div>

@@ -1,0 +1,34 @@
+<?php
+
+namespace App\View\Components\Svg;
+
+use App\Traits\IsAnImage;
+use Illuminate\View\Component;
+
+class Deltohedron extends Component
+{
+    use IsAnImage;
+
+    /**
+     * Create a new component instance.
+     *
+     * @param  mixed  $height
+     * @param  mixed  $width
+     * @return void
+     */
+    public function __construct($height = null, $width = null)
+    {
+        $this->height = $height ?? 26;
+        $this->width = $width ?? 26;
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     *
+     * @return \Illuminate\Contracts\View\View|\Closure|string
+     */
+    public function render()
+    {
+        return view('components.svg.deltohedron');
+    }
+}
