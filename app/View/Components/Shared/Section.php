@@ -8,24 +8,24 @@ use Illuminate\View\Component;
  * @note This component has a named slot in the view that isn't part of this
  * class but is optional.
  */
-class CollapsibleSection extends Component
+class Section extends Component
 {
     /**
-     * The section text for the clickable summary.
+     * The header text for the section.
      *
      * @var string
      */
-    public $summary;
+    public $header;
 
     /**
      * Create a new component instance.
      *
-     * @param  string  $summary
+     * @param  string  $header
      * @return void
      */
-    public function __construct($summary)
+    public function __construct($header)
     {
-        $this->summary = $summary;
+        $this->header = $header;
     }
 
     /**
@@ -35,6 +35,6 @@ class CollapsibleSection extends Component
      */
     public function render()
     {
-        return view('components.shared.collapsible-section');
+        return view('components.shared.section');
     }
 }

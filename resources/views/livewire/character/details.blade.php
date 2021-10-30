@@ -1,4 +1,4 @@
-<x-shared.collapsible-section summary="Character Details">
+<x-shared.section header="Character Details">
     <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
         <div class="sm:grid grid-cols-2 gap-4 xl:col-span-2">
             <div class="flex justify-center sm:order-2 xl:order-1">
@@ -44,4 +44,4 @@
             <x-fields.textarea field="character.allies_organizations" label="Allies & Organizations" rows="12" id="allies_organizations" />
         </div>
     </div>
-</x-shared.collapsible-section>
+</x-shared.section>
