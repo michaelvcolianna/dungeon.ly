@@ -48,11 +48,7 @@ class CharacterList extends Component
      */
     public function updateCharacters()
     {
-        // Obtain the user's characters for the current team
-        $this->characters = Character::where([
-            ['user_id', auth()->user()->id],
-            ['team_id', auth()->user()->currentTeam->id],
-        ])->get();
+        $this->characters = auth()->user()->characters;
     }
 
     /**

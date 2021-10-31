@@ -19,6 +19,16 @@ class Header extends Component
     ];
 
     /**
+     * Create a new component instance.
+     *
+     * @return void
+     */
+    public function mount()
+    {
+        $this->character = request()->character;
+    }
+
+    /**
      * Get the view / contents that represent the component.
      *
      * @return \Illuminate\Contracts\View\View|\Closure|string
@@ -49,15 +59,5 @@ class Header extends Component
     public function getCharacterNameProperty()
     {
         return $this->character->name ?? 'Unknown name';
-    }
-
-    /**
-     * Print the character's user name.
-     *
-     * @return string
-     */
-    public function getUserNameProperty()
-    {
-        return $this->character->user->name;
     }
 }

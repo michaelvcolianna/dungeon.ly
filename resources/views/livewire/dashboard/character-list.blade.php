@@ -7,8 +7,14 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             @foreach($characters as $character)
                 <div class="bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-600 cursor-pointer ring-red-700 ring-opacity-50 hover:ring" wire:click="viewCharacter({{ $character->id }})">
-                    <div class="truncate {{ $character->name ? 'font-bold' : 'italic' }}">
-                        {{ $character->name ?? 'No name' }}
+                    <div class="w-full flex flex-row justify-between {{ $character->name ? 'font-bold' : 'italic' }}">
+                        <div class="mr-2 truncate">
+                            {{ $character->name ?? 'No name' }}
+                        </div>
+
+                        <div class="ml-2 text-right">
+                            <span class="bg-gray-600 text-white rounded-full px-2">{{ $character->team->name }}</span>
+                        </div>
                     </div>
 
                     <div class="mt-2 text-sm w-full flex flex-row justify-between">

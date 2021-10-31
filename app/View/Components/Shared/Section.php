@@ -4,28 +4,24 @@ namespace App\View\Components\Shared;
 
 use Illuminate\View\Component;
 
-/**
- * @note This component has a named slot in the view that isn't part of this
- * class but is optional.
- */
 class Section extends Component
 {
     /**
-     * The header text for the section.
+     * Whether the details are open by default.
      *
-     * @var string
+     * @param  boolean
      */
-    public $header;
+    public $expanded;
 
     /**
      * Create a new component instance.
      *
-     * @param  string  $header
+     * @param  boolean  $expanded
      * @return void
      */
-    public function __construct($header)
+    public function __construct($expanded = false)
     {
-        $this->header = $header;
+        $this->expanded = $expanded;
     }
 
     /**
@@ -36,5 +32,31 @@ class Section extends Component
     public function render()
     {
         return view('components.shared.section');
+    }
+
+    /**
+     * Print the text for the Alpine open status.
+     *
+     * @return string
+     */
+    public function alpineOpen()
+    {
+        return ($this->expanded)
+            ? 'true'
+            : 'false'
+            ;
+    }
+
+    /**
+     * Print the text for the open status.
+     *
+     * @return string
+     */
+    public function openStatus()
+    {
+        return ($this->expanded)
+            ? 'open'
+            : null
+            ;
     }
 }
