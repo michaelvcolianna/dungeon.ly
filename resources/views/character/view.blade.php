@@ -8,10 +8,11 @@
             <div class="grid grid-cols-1 gap-4">
                 <x-shared.section>
                     <x-slot name="header">
-                        Image
+                        Images
                     </x-slot>
 
-                    <livewire:fields.file-upload field="character.appearance" />
+                    <livewire:fields.file-upload field="character.appearance" label="Appearance" />
+                    <livewire:fields.file-upload field="character.symbol" label="Group Symbol" />
                 </x-shared.section>
 
                 <x-shared.section>
