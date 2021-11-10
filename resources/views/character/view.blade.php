@@ -50,6 +50,37 @@
                     <livewire:fields.textarea field="character.flaws" label="Flaws" />
                     <livewire:fields.textarea field="character.backstory" label="Backstory" />
                 </x-shared.section>
+
+                <x-shared.section :expanded="true">
+                    <x-slot name="header">
+                        Stats
+                    </x-slot>
+
+                    <x-character.attribute field="character.strength" label="Strength" />
+                    <x-character.attribute field="character.dexterity" label="Dexterity" />
+                    <x-character.attribute field="character.constitution" label="Constitution" />
+                    <x-character.attribute field="character.intelligence" label="Intelligence" />
+                    <x-character.attribute field="character.wisdom" label="Wisdom" />
+                    <x-character.attribute field="character.charisma" label="Charisma" />
+
+                    <livewire:fields.text field="character.inspiration" label="Inspiration" />
+                    <livewire:fields.text field="character.proficiency_bonus" label="Proficiency Bonus" />
+                    <livewire:fields.text field="character.passive_wisdom" label="Passive Wisdom (Perception)" />
+                    <livewire:fields.text field="character.armor_class" label="Armor Class" />
+                    <livewire:fields.text field="character.initiative" label="Initiative" />
+                    <livewire:fields.text field="character.speed" label="Speed" />
+
+                    <div>
+                        <livewire:fields.text field="character.hit_points.maximum" label="Hit Point Maximum" />
+                        <livewire:fields.textarea field="character.hit_points.current" label="Current Hit Points" />
+                        <livewire:fields.textarea field="character.hit_points.temporary" label="Temporary Hit Points" />
+                    </div>
+
+                    <div>
+                        <livewire:fields.text field="character.hit_dice.total" label="Hit Dice Total" />
+                        <livewire:fields.textarea field="character.hit_dice.value" label="Hit Dice" />
+                    </div>
+                </x-shared.section>
             </div>
         </div>
     </div>

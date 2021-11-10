@@ -57,12 +57,6 @@ class CreateCharactersTable extends Migration
             $table->string('passive_wisdom')->nullable();
             $table->string('inspiration')->nullable();
             $table->string('proficiency_bonus')->nullable();
-            $table->json('strength_saving_throw')->nullable();
-            $table->json('dexterity_saving_throw')->nullable();
-            $table->json('constitution_saving_throw')->nullable();
-            $table->json('intelligence_saving_throw')->nullable();
-            $table->json('wisdom_saving_throw')->nullable();
-            $table->json('charisma_saving_throw')->nullable();
             $table->string('armor_class')->nullable();
             $table->string('initiative')->nullable();
             $table->string('speed')->nullable();

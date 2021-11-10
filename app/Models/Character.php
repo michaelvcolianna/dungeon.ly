@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -9,6 +10,46 @@ use Illuminate\Support\Facades\Storage;
 class Character extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'strength' => AsArrayObject::class,
+        'dexterity' => AsArrayObject::class,
+        'constitution' => AsArrayObject::class,
+        'intelligence' => AsArrayObject::class,
+        'wisdom' => AsArrayObject::class,
+        'charisma' => AsArrayObject::class,
+        'hit_points' => AsArrayObject::class,
+        'hit_dice' => AsArrayObject::class,
+        'death_save_successes' => AsArrayObject::class,
+        'death_save_failures' => AsArrayObject::class,
+        'spell_levels' => AsArrayObject::class,
+        'spells' => AsArrayObject::class,
+        'acrobatics' => AsArrayObject::class,
+        'animal_handling' => AsArrayObject::class,
+        'arcana' => AsArrayObject::class,
+        'athletics' => AsArrayObject::class,
+        'deception' => AsArrayObject::class,
+        'history' => AsArrayObject::class,
+        'insight' => AsArrayObject::class,
+        'intimidation' => AsArrayObject::class,
+        'investigation' => AsArrayObject::class,
+        'medicine' => AsArrayObject::class,
+        'nature' => AsArrayObject::class,
+        'perception' => AsArrayObject::class,
+        'performance' => AsArrayObject::class,
+        'persuasion' => AsArrayObject::class,
+        'religion' => AsArrayObject::class,
+        'sleight_of_hand' => AsArrayObject::class,
+        'stealth' => AsArrayObject::class,
+        'survival' => AsArrayObject::class,
+        'weapons' => AsArrayObject::class,
+        'money' => AsArrayObject::class,
+    ];
 
     /**
      * The attributes that aren't mass assignable.
