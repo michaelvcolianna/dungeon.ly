@@ -15,7 +15,7 @@ class Header extends Component
      * @var array
      */
     protected $listeners = [
-        'characterUpdated' => '$refresh',
+        'updatedCharacterName' => '$refresh',
     ];
 
     /**
@@ -36,28 +36,5 @@ class Header extends Component
     public function render()
     {
         return view('livewire.character.header');
-    }
-
-    /**
-     * Print the way the header font should display.
-     *
-     * @return string
-     */
-    public function getNameDisplayProperty()
-    {
-        return ($this->character->name)
-            ? 'font-semibold'
-            : 'italic'
-            ;
-    }
-
-    /**
-     * Print the character name text.
-     *
-     * @return string
-     */
-    public function getCharacterNameProperty()
-    {
-        return $this->character->name ?? 'Unknown name';
     }
 }

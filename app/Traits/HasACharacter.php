@@ -97,6 +97,16 @@ trait HasACharacter
     public Character $character;
 
     /**
+     * Build validation rules for all fields.
+     *
+     * @return array
+     */
+    protected function buildRules()
+    {
+        return array_fill_keys($this->fields, 'nullable');
+    }
+
+    /**
      * Retrieve a character by ID.
      *
      * @param  integer  $id
