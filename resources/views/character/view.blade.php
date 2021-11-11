@@ -51,7 +51,7 @@
                     <livewire:fields.textarea field="character.backstory" label="Backstory" />
                 </x-shared.section>
 
-                <x-shared.section :expanded="true">
+                <x-shared.section>
                     <x-slot name="header">
                         Stats
                     </x-slot>
@@ -82,6 +82,31 @@
                     </div>
 
                     <livewire:character.death-saves />
+                </x-shared.section>
+
+                <x-shared.section>
+                    <x-slot name="header">
+                        Skills
+                    </x-slot>
+
+                    <x-character.skill field="character.acrobatics" label="Acrobatics" attribute="Dex" />
+                    <x-character.skill field="character.animal_handling" label="Animal Handling" attribute="Wis" />
+                    <x-character.skill field="character.arcana" label="Arcana" attribute="Int" />
+                    <x-character.skill field="character.athletics" label="Athletics" attribute="Str" />
+                    <x-character.skill field="character.deception" label="Deception" attribute="Cha" />
+                    <x-character.skill field="character.history" label="History" attribute="Int" />
+                    <x-character.skill field="character.insight" label="Insight" attribute="Wis" />
+                    <x-character.skill field="character.intimidation" label="Intimidation" attribute="Cha" />
+                    <x-character.skill field="character.investigation" label="Investigation" attribute="Int" />
+                    <x-character.skill field="character.medicine" label="Medicine" attribute="Wis" />
+                    <x-character.skill field="character.nature" label="Nature" attribute="Int" />
+                    <x-character.skill field="character.perception" label="Perception" attribute="Wis" />
+                    <x-character.skill field="character.performance" label="Performance" attribute="Cha" />
+                    <x-character.skill field="character.persuasion" label="Persuasion" attribute="Cha" />
+                    <x-character.skill field="character.religion" label="Religion" attribute="Int" />
+                    <x-character.skill field="character.sleight_of_hand" label="Sleight of Hand" attribute="Dex" />
+                    <x-character.skill field="character.stealth" label="Stealth" attribute="Dex" />
+                    <x-character.skill field="character.survival" label="Survival" attribute="Wis" />
                 </x-shared.section>
             </div>
         </div>
