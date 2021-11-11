@@ -62,8 +62,7 @@ class CreateCharactersTable extends Migration
             $table->string('speed')->nullable();
             $table->json('hit_points')->nullable();
             $table->json('hit_dice')->nullable();
-            $table->json('death_save_successes')->nullable();
-            $table->json('death_save_failures')->nullable();
+            $table->json('death_saves')->nullable();
             $table->string('spellcasting_class')->nullable();
             $table->string('spellcasting_ability')->nullable();
             $table->string('spell_save_dc')->nullable();

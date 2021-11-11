@@ -80,6 +80,8 @@
                         <livewire:fields.text field="character.hit_dice.total" label="Hit Dice Total" />
                         <livewire:fields.textarea field="character.hit_dice.value" label="Hit Dice" />
                     </div>
+
+                    <livewire:character.death-saves />
                 </x-shared.section>
             </div>
         </div>
