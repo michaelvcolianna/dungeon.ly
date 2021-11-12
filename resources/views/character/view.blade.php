@@ -8,29 +8,20 @@
             <div class="grid grid-cols-1 gap-4">
                 <x-shared.section>
                     <x-slot name="header">
-                        Images
-                    </x-slot>
-
-                    <livewire:fields.file-upload field="character.appearance" label="Appearance" />
-                    <livewire:fields.file-upload field="character.symbol" label="Group Symbol" />
-                </x-shared.section>
-
-                <x-shared.section>
-                    <x-slot name="header">
                         Details
                     </x-slot>
 
-                    <livewire:fields.text field="character.name" label="Name" />
-                    <livewire:fields.text field="character.class_level" label="Class & Level" />
-                    <livewire:fields.text field="character.background" label="Background" />
-                    <livewire:fields.text field="character.race" label="Race" />
-                    <livewire:fields.text field="character.alignment" label="Alignment" />
-                    <livewire:fields.text field="character.experience_points" label="Experience Points" />
-                    <livewire:fields.textarea field="character.features_traits" label="Features & Traits" />
-                    <livewire:fields.textarea field="character.other_proficiencies_languages" label="Other Proficiencies & Languages" />
-                    <livewire:fields.textarea field="character.additional_features_traits" label="Additional Features & Traits" />
-                    <livewire:fields.text field="character.affiliation" label="Group Affiliation" />
-                    <livewire:fields.textarea field="character.allies_organizations" label="Allies & Organizations" />
+                    <x-character.field name="character.name" />
+                    <x-character.field name="character.class_level" />
+                    <x-character.field name="character.background" />
+                    <x-character.field name="character.race" />
+                    <x-character.field name="character.alignment" />
+                    <x-character.field name="character.experience_points" />
+                    <x-character.field name="character.features_traits" />
+                    <x-character.field name="character.additional_features_traits" />
+                    <x-character.field name="character.other_proficiencies_languages" />
+                    <x-character.field name="character.affiliation" />
+                    <x-character.field name="character.allies_organizations" />
                 </x-shared.section>
 
                 <x-shared.section>
@@ -38,17 +29,17 @@
                         Biographical
                     </x-slot>
 
-                    <livewire:fields.text field="character.age" label="Age" class="md:col-start-2 lg:col-auto" />
-                    <livewire:fields.text field="character.height" label="Height" />
-                    <livewire:fields.text field="character.weight" label="Weight" />
-                    <livewire:fields.text field="character.eyes" label="Eyes" class="md:col-start-2 lg:col-auto" />
-                    <livewire:fields.text field="character.skin" label="Skin" />
-                    <livewire:fields.text field="character.hair" label="Hair" />
-                    <livewire:fields.textarea field="character.personality_traits" label="Personality Traits" />
-                    <livewire:fields.textarea field="character.ideals" label="Ideals" />
-                    <livewire:fields.textarea field="character.bonds" label="Bonds" />
-                    <livewire:fields.textarea field="character.flaws" label="Flaws" />
-                    <livewire:fields.textarea field="character.backstory" label="Backstory" />
+                    <x-character.field name="character.age" />
+                    <x-character.field name="character.height" />
+                    <x-character.field name="character.weight" />
+                    <x-character.field name="character.eyes" />
+                    <x-character.field name="character.skin" />
+                    <x-character.field name="character.hair" />
+                    <x-character.field name="character.personality_traits" />
+                    <x-character.field name="character.ideals" />
+                    <x-character.field name="character.bonds" />
+                    <x-character.field name="character.flaws" />
+                    <x-character.field name="character.backstory" />
                 </x-shared.section>
 
                 <x-shared.section>
@@ -56,32 +47,15 @@
                         Stats
                     </x-slot>
 
-                    <x-character.attribute field="character.strength" label="Strength" />
-                    <x-character.attribute field="character.dexterity" label="Dexterity" />
-                    <x-character.attribute field="character.constitution" label="Constitution" />
-                    <x-character.attribute field="character.intelligence" label="Intelligence" />
-                    <x-character.attribute field="character.wisdom" label="Wisdom" />
-                    <x-character.attribute field="character.charisma" label="Charisma" />
-
-                    <livewire:fields.text field="character.inspiration" label="Inspiration" />
-                    <livewire:fields.text field="character.proficiency_bonus" label="Proficiency Bonus" />
-                    <livewire:fields.text field="character.passive_wisdom" label="Passive Wisdom (Perception)" />
-                    <livewire:fields.text field="character.armor_class" label="Armor Class" />
-                    <livewire:fields.text field="character.initiative" label="Initiative" />
-                    <livewire:fields.text field="character.speed" label="Speed" />
-
-                    <div>
-                        <livewire:fields.text field="character.hit_points.maximum" label="Hit Point Maximum" />
-                        <livewire:fields.textarea field="character.hit_points.current" label="Current Hit Points" />
-                        <livewire:fields.textarea field="character.hit_points.temporary" label="Temporary Hit Points" />
-                    </div>
-
-                    <div>
-                        <livewire:fields.text field="character.hit_dice.total" label="Hit Dice Total" />
-                        <livewire:fields.textarea field="character.hit_dice.value" label="Hit Dice" />
-                    </div>
-
-                    <livewire:character.death-saves />
+                    <x-character.field name="character.strength" />
+                    <x-character.field name="character.dexterity" />
+                    <x-character.field name="character.constitution" />
+                    <x-character.field name="character.intelligence" />
+                    <x-character.field name="character.wisdom" />
+                    <x-character.field name="character.charisma" />
+                    <x-character.field name="character.inspiration" />
+                    <x-character.field name="character.proficiency_bonus" />
+                    <x-character.field name="character.passive_wisdom" />
                 </x-shared.section>
 
                 <x-shared.section>
@@ -89,24 +63,71 @@
                         Skills
                     </x-slot>
 
-                    <x-character.skill field="character.acrobatics" label="Acrobatics" attribute="Dex" />
-                    <x-character.skill field="character.animal_handling" label="Animal Handling" attribute="Wis" />
-                    <x-character.skill field="character.arcana" label="Arcana" attribute="Int" />
-                    <x-character.skill field="character.athletics" label="Athletics" attribute="Str" />
-                    <x-character.skill field="character.deception" label="Deception" attribute="Cha" />
-                    <x-character.skill field="character.history" label="History" attribute="Int" />
-                    <x-character.skill field="character.insight" label="Insight" attribute="Wis" />
-                    <x-character.skill field="character.intimidation" label="Intimidation" attribute="Cha" />
-                    <x-character.skill field="character.investigation" label="Investigation" attribute="Int" />
-                    <x-character.skill field="character.medicine" label="Medicine" attribute="Wis" />
-                    <x-character.skill field="character.nature" label="Nature" attribute="Int" />
-                    <x-character.skill field="character.perception" label="Perception" attribute="Wis" />
-                    <x-character.skill field="character.performance" label="Performance" attribute="Cha" />
-                    <x-character.skill field="character.persuasion" label="Persuasion" attribute="Cha" />
-                    <x-character.skill field="character.religion" label="Religion" attribute="Int" />
-                    <x-character.skill field="character.sleight_of_hand" label="Sleight of Hand" attribute="Dex" />
-                    <x-character.skill field="character.stealth" label="Stealth" attribute="Dex" />
-                    <x-character.skill field="character.survival" label="Survival" attribute="Wis" />
+                    <x-character.field name="character.acrobatics" />
+                    <x-character.field name="character.animal_handling" />
+                    <x-character.field name="character.arcana" />
+                    <x-character.field name="character.athletics" />
+                    <x-character.field name="character.deception" />
+                    <x-character.field name="character.history" />
+                    <x-character.field name="character.insight" />
+                    <x-character.field name="character.intimidation" />
+                    <x-character.field name="character.investigation" />
+                    <x-character.field name="character.medicine" />
+                    <x-character.field name="character.nature" />
+                    <x-character.field name="character.perception" />
+                    <x-character.field name="character.performance" />
+                    <x-character.field name="character.persuasion" />
+                    <x-character.field name="character.religion" />
+                    <x-character.field name="character.sleight_of_hand" />
+                    <x-character.field name="character.stealth" />
+                    <x-character.field name="character.survival" />
+                </x-shared.section>
+
+                <x-shared.section>
+                    <x-slot name="header">
+                        Combat
+                    </x-slot>
+
+                    <x-character.field name="character.armor_class" />
+                    <x-character.field name="character.initiative" />
+                    <x-character.field name="character.speed" />
+                    <x-character.field name="character.hit_points" />
+                    <x-character.field name="character.hit_dice" />
+                    <x-character.field name="character.death_saves" />
+                    <x-character.field name="character.weapons" />
+                    <x-character.field name="character.attacks_spellcasting" />
+                </x-shared.section>
+
+                <x-shared.section>
+                    <x-slot name="header">
+                        Magic
+                    </x-slot>
+
+                    <x-character.field name="character.spellcasting_class" />
+                    <x-character.field name="character.spellcasting_ability" />
+                    <x-character.field name="character.spell_save_dc" />
+                    <x-character.field name="character.spell_attack_bonus" />
+                    <x-character.field name="character.spell_levels" />
+                    <x-character.field name="character.spells" />
+                </x-shared.section>
+
+                <x-shared.section>
+                    <x-slot name="header">
+                        Gear
+                    </x-slot>
+
+                    <x-character.field name="character.money" />
+                    <x-character.field name="character.equipment" />
+                    <x-character.field name="character.treasure" />
+                </x-shared.section>
+
+                <x-shared.section>
+                    <x-slot name="header">
+                        Images
+                    </x-slot>
+
+                    <x-character.field name="character.appearance" />
+                    <x-character.field name="character.symbol" />
                 </x-shared.section>
             </div>
         </div>
