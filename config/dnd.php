@@ -378,6 +378,9 @@ return [
             'slots_total' => [],
         ],
         'spell' => [
+            'book_page_description' => [
+                'label' => 'Book & Page/Description'
+            ],
             'name' => [],
             'prepared' => [
                 'template' => 'checkbox',
