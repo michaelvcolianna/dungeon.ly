@@ -88,6 +88,16 @@ class Field extends Component
     }
 
     /**
+     * Get a field's component.
+     *
+     * @return string
+     */
+    public function component()
+    {
+        return 'fields.' . $this->template();
+    }
+
+    /**
      * Get a field's property group keys.
      *
      * @return array

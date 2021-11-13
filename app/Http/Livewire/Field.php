@@ -31,6 +31,13 @@ class Field extends Component
      */
     protected function rules()
     {
+        if(isset($this->structure))
+        {
+            return array_fill_keys(array_map(function($value) {
+                return $this->field . '.' . $value;
+            }, array_keys($this->structure)), 'nullable');
+        }
+
         return [
             $this->field => 'nullable',
         ];

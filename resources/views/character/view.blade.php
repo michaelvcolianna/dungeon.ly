@@ -91,10 +91,10 @@
                     <x-character.field name="character.armor_class" />
                     <x-character.field name="character.initiative" />
                     <x-character.field name="character.speed" />
-                    <x-character.field name="character.hit_points" />
-                    <x-character.field name="character.hit_dice" />
-                    <x-character.field name="character.death_saves" />
-                    <x-character.field name="character.weapons" />
+                    {{-- <x-character.field name="character.hit_points" /> --}}
+                    {{-- <x-character.field name="character.hit_dice" /> --}}
+                    {{-- <x-character.field name="character.death_saves" /> --}}
+                    {{-- <x-character.field name="character.weapons" /> --}}
                     <x-character.field name="character.attacks_spellcasting" />
                 </x-shared.section>
 
@@ -107,8 +107,8 @@
                     <x-character.field name="character.spellcasting_ability" />
                     <x-character.field name="character.spell_save_dc" />
                     <x-character.field name="character.spell_attack_bonus" />
-                    <x-character.field name="character.spell_levels" />
-                    <x-character.field name="character.spells" />
+                    {{-- <x-character.field name="character.spell_levels" /> --}}
+                    {{-- <x-character.field name="character.spells" /> --}}
                 </x-shared.section>
 
                 <x-shared.section>
@@ -116,7 +116,7 @@
                         Gear
                     </x-slot>
 
-                    <x-character.field name="character.money" />
+                    {{-- <x-character.field name="character.money" /> --}}
                     <x-character.field name="character.equipment" />
                     <x-character.field name="character.treasure" />
                 </x-shared.section>
