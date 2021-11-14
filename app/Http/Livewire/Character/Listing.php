@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\Dashboard;
+namespace App\Http\Livewire\Character;
 
 use App\Models\Character;
 use Livewire\Component;
 
-class CharacterList extends Component
+class Listing extends Component
 {
     /**
      * The list of characters.
@@ -40,7 +40,7 @@ class CharacterList extends Component
      */
     public function render()
     {
-        return view('livewire.dashboard.character-list');
+        return view('livewire.character.listing');
     }
 
     /**

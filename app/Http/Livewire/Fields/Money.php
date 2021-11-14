@@ -4,15 +4,8 @@ namespace App\Http\Livewire\Fields;
 
 use App\Livewire\Field;
 
-class Textarea extends Field
+class Money extends Field
 {
-    /**
-     * The number of rows.
-     *
-     * @var integer
-     */
-    public $rows;
-
     /**
      * Validation rules.
      *
@@ -20,9 +13,9 @@ class Textarea extends Field
      */
     protected function rules()
     {
-        return [
-            $this->name => 'nullable',
-        ];
+        return array_fill_keys(array_map(function($value) {
+            return $this->name . '.' . $value;
+        }, ['cp', 'sp', 'ep', 'gp', 'pp']), 'nullable');
     }
 
     /**
@@ -30,14 +23,11 @@ class Textarea extends Field
      *
      * @param  string  $label
      * @param  string  $name
-     * @param  integer  $rows
      * @return void
      */
-    public function mount($label, $name, $rows = 5)
+    public function mount($label, $name)
     {
         $this->setupField($label, $name);
-
-        $this->rows = $rows;
     }
 
     /**
@@ -47,6 +37,6 @@ class Textarea extends Field
      */
     public function render()
     {
-        return view('livewire.fields.textarea');
+        return view('livewire.fields.money');
     }
 }

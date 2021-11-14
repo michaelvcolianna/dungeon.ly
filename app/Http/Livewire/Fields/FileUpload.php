@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Fields;
 
-use App\Http\Livewire\Field;
+use App\Livewire\Field;
 use Illuminate\Support\Facades\Storage;
 use Livewire\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
@@ -12,18 +12,27 @@ class FileUpload extends Field
     use WithFileUploads;
 
     /**
+     * Validation rules.
+     *
+     * @return array
+     */
+    protected function rules()
+    {
+        return [
+            $this->name => 'nullable',
+        ];
+    }
+
+    /**
      * Create a new component instance.
      *
-     * @param  string  $field
-     * @param  string  $label
+     * @param  string  $name
+     * @param  string  $name
      * @return void
      */
-    public function mount($field, $label = null)
+    public function mount($label = null, $name)
     {
-        $this->getCharacter();
-
-        $this->field = $field;
-        $this->label = $label;
+        $this->setupField($label, $name);
     }
 
     /**
@@ -43,7 +52,7 @@ class FileUpload extends Field
      */
     public function getField()
     {
-        return str_replace('character.', '', $this->field);
+        return str_replace('character.', '', $this->name);
     }
 
     /**
@@ -53,7 +62,7 @@ class FileUpload extends Field
      */
     public function hasField()
     {
-        return (data_get($this, $this->field));
+        return (data_get($this, $this->name));
     }
 
     /**
@@ -97,7 +106,7 @@ class FileUpload extends Field
     {
         if(empty($value))
         {
-            data_set($this, $this->field, null);
+            data_set($this, $this->name, null);
         }
 
         if($value instanceof TemporaryUploadedFile)
@@ -105,7 +114,7 @@ class FileUpload extends Field
             tap($this->character->{$this->getField()}, function($previous) use($name, $value) {
                 $location = 'character-' . $this->getField() . 's';
 
-                data_set($this, $this->field, $value->storePublicly($location, 'public'));
+                data_set($this, $this->name, $value->storePublicly($location, 'public'));
 
                 if($previous)
                 {
@@ -124,9 +133,9 @@ class FileUpload extends Field
      */
     public function removeImage()
     {
-        Storage::disk('public')->delete(data_get($this, $this->field));
+        Storage::disk('public')->delete(data_get($this, $this->name));
 
-        data_set($this, $this->field, null);
+        data_set($this, $this->name, null);
 
         $this->character->save();
     }

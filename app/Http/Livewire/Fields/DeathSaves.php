@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Character;
+namespace App\Http\Livewire\Fields;
 
-use App\Http\Livewire\Field;
+use App\Livewire\Field;
 
 class DeathSaves extends Field
 {
@@ -13,22 +13,21 @@ class DeathSaves extends Field
      */
     protected function rules()
     {
-        return [
-            'character.death_saves.successes.*' => 'nullable',
-            'character.death_saves.failures.*' => 'nullable',
-        ];
+        return array_fill_keys(array_map(function($value) {
+            return $this->name . '.' . $value;
+        }, ['successes.*', 'failures.*']), 'nullable');
     }
 
     /**
      * Create a new component instance.
      *
+     * @param  string  $label
+     * @param  string  $name
      * @return void
      */
-    public function mount()
+    public function mount($label, $name)
     {
-        $this->getCharacter();
-
-        $this->field = 'character.death_saves';
+        $this->setupField($label, $name);
     }
 
     /**
@@ -38,7 +37,6 @@ class DeathSaves extends Field
      */
     public function render()
     {
-        // dd($this->rules());
-        return view('livewire.character.death-saves');
+        return view('livewire.fields.death-saves');
     }
 }

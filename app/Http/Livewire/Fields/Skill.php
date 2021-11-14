@@ -4,14 +4,14 @@ namespace App\Http\Livewire\Fields;
 
 use App\Livewire\Field;
 
-class Textarea extends Field
+class Skill extends Field
 {
     /**
-     * The number of rows.
+     * The field's linked attribute.
      *
-     * @var integer
+     * @param  string
      */
-    public $rows;
+    public $attribute;
 
     /**
      * Validation rules.
@@ -20,24 +20,23 @@ class Textarea extends Field
      */
     protected function rules()
     {
-        return [
-            $this->name => 'nullable',
-        ];
+        return array_fill_keys(array_map(function($value) {
+            return $this->name . '.' . $value;
+        }, ['value', 'proficiency']), 'nullable');
     }
 
     /**
      * Create a new component instance.
      *
+     * @param  string  $attribute
      * @param  string  $label
      * @param  string  $name
-     * @param  integer  $rows
      * @return void
      */
-    public function mount($label, $name, $rows = 5)
+    public function mount($attribute, $label, $name)
     {
         $this->setupField($label, $name);
-
-        $this->rows = $rows;
+        $this->attribute = $attribute;
     }
 
     /**
@@ -47,6 +46,6 @@ class Textarea extends Field
      */
     public function render()
     {
-        return view('livewire.fields.textarea');
+        return view('livewire.fields.skill');
     }
 }

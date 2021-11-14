@@ -31,6 +31,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     })->name('dashboard');
 
     Route::get('/characters/{character}', function(Character $character) {
-        return view('character.view', ['character' => $character]);
+        return view('character', ['character' => $character]);
     })->name('character.view');
 });

@@ -15,7 +15,7 @@
                 put in any "public" data, that will also print.
             --}}
 
-            <livewire:dashboard.character-list />
+            <livewire:character.listing />
         </div>
     </div>
 </x-app-layout>

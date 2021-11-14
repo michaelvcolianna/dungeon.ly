@@ -2,32 +2,32 @@
 
 namespace App\Http\Livewire\Fields;
 
-use App\Http\Livewire\Field;
+use App\Livewire\Field;
 
 class Text extends Field
 {
     /**
-     * The input type.
+     * Validation rules.
      *
-     * @var string
+     * @return array
      */
-    public $type;
+    protected function rules()
+    {
+        return [
+            $this->name => 'nullable',
+        ];
+    }
 
     /**
      * Create a new component instance.
      *
-     * @param  string  $field
      * @param  string  $label
-     * @param  string  $type
+     * @param  string  $name
      * @return void
      */
-    public function mount($field, $label, $type = 'text')
+    public function mount($label, $name)
     {
-        $this->getCharacter();
-
-        $this->field = $field;
-        $this->label = $label;
-        $this->type = $type;
+        $this->setupField($label, $name);
     }
 
     /**

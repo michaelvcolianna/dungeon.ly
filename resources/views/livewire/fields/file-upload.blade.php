@@ -6,14 +6,14 @@
     }"
 >
     <label
-        for="{{ $field }}" x-show="label"
+        for="{{ $name }}" x-show="label"
         class="block font-medium text-center text-sm text-gray-700"
     >
         {{ $label }}
     </label>
 
     <input
-        type="file" wire:model="{{ $field }}" class="hidden"
+        type="file" wire:model="{{ $name }}" class="hidden"
         x-ref="{{ $this->getField() }}" x-on:change="
             {{ $this->getAlpineName() }} = $refs.{{ $this->getField() }}.files[0].name;
             const reader = new FileReader();
