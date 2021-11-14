@@ -38,6 +38,7 @@ class Character extends Model
         'intimidation' => AsArrayObject::class,
         'investigation' => AsArrayObject::class,
         'medicine' => AsArrayObject::class,
+        'money' => AsArrayObject::class,
         'nature' => AsArrayObject::class,
         'perception' => AsArrayObject::class,
         'performance' => AsArrayObject::class,
@@ -47,7 +48,6 @@ class Character extends Model
         'stealth' => AsArrayObject::class,
         'survival' => AsArrayObject::class,
         'weapons' => AsArrayObject::class,
-        'money' => AsArrayObject::class,
     ];
 
     /**

@@ -90,11 +90,14 @@ class Field extends Component
     /**
      * Get a field's component.
      *
+     * @param  string  $template
      * @return string
      */
-    public function component()
+    public function component($template = null)
     {
-        return 'fields.' . $this->template();
+        $template ??= $this->template();
+
+        return 'fields.' . $template;
     }
 
     /**
@@ -110,11 +113,20 @@ class Field extends Component
     /**
      * Get a field's label.
      *
+     * @param  string  $label
+     * @param  string  $fallback
      * @return string
      */
-    public function label()
+    public function label($label = null, $fallback = null)
     {
-        return $this->config['label'] ?? Str::of($this->name)->replace('character.', null)->replace('_', ' ')->title();
+        if(isset($this->config['label']))
+        {
+            $label = $this->config['label'];
+        }
+
+        $fallback ??= $this->name;
+
+        return $label ?? Str::of($fallback)->replace('character.', null)->replace('_', ' ')->title();
     }
 
     /**
@@ -165,5 +177,25 @@ class Field extends Component
     public function template()
     {
         return $this->config['template'] ?? 'text';
+    }
+
+    /**
+     * Determine if a field has grouped subfields to process.
+     *
+     * @return boolean
+     */
+    public function isGrouped()
+    {
+        return !empty($this->config['groups']);
+    }
+
+    /**
+     * Determine if a field can display a Livewire component directly.
+     *
+     * @return boolean
+     */
+    public function isSimple()
+    {
+        return empty($this->structure());
     }
 }

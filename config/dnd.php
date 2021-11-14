@@ -31,16 +31,12 @@ return [
             'rows' => 10,
             'template' => 'textarea',
         ],
-        'age' => [
-            'column' => 'string',
-        ],
+        'age' => ['column' => 'string'],
         'affiliation' => [
             'column' => 'string',
             'label' => 'Group Affiliation',
         ],
-        'alignment' => [
-            'column' => 'string',
-        ],
+        'alignment' => ['column' => 'string'],
         'allies_organizations' => [
             'column' => 'text',
             'label' => 'Allies & Organizations',
@@ -62,9 +58,7 @@ return [
             'column' => 'json',
             'template' => 'skill',
         ],
-        'armor_class' => [
-            'column' => 'string',
-        ],
+        'armor_class' => ['column' => 'string'],
         'athletics' => [
             'attribute' => 'Str',
             'column' => 'json',
@@ -76,9 +70,7 @@ return [
             'rows' => 10,
             'template' => 'textarea',
         ],
-        'background' => [
-            'column' => 'string',
-        ],
+        'background' => ['column' => 'string'],
         'backstory' => [
             'column' => 'text',
             'rows' => 20,
@@ -119,12 +111,8 @@ return [
             'rows' => 10,
             'template' => 'textarea',
         ],
-        'experience_points' => [
-            'column' => 'string',
-        ],
-        'eyes' => [
-            'column' => 'string',
-        ],
+        'experience_points' => ['column' => 'string'],
+        'eyes' => ['column' => 'string'],
         'features_traits' => [
             'column' => 'text',
             'label' => 'Features & Traits',
@@ -135,12 +123,8 @@ return [
             'column' => 'text',
             'template' => 'textarea',
         ],
-        'hair' => [
-            'column' => 'string',
-        ],
-        'height' => [
-            'column' => 'string',
-        ],
+        'hair' => ['column' => 'string'],
+        'height' => ['column' => 'string'],
         'history' => [
             'attribute' => 'Int',
             'column' => 'json',
@@ -158,17 +142,13 @@ return [
             'column' => 'text',
             'template' => 'textarea',
         ],
-        'initiative' => [
-            'column' => 'string',
-        ],
+        'initiative' => ['column' => 'string'],
         'insight' => [
             'attribute' => 'Wis',
             'column' => 'json',
             'template' => 'skill',
         ],
-        'inspiration' => [
-            'column' => 'string',
-        ],
+        'inspiration' => ['column' => 'string'],
         'intelligence' => [
             'column' => 'json',
             'template' => 'attribute',
@@ -192,9 +172,7 @@ return [
             'column' => 'json',
             'template' => 'money',
         ],
-        'name' => [
-            'column' => 'string',
-        ],
+        'name' => ['column' => 'string'],
         'nature' => [
             'attribute' => 'Int',
             'column' => 'json',
@@ -229,50 +207,36 @@ return [
             'column' => 'json',
             'template' => 'skill',
         ],
-        'proficiency_bonus' => [
-            'column' => 'string',
-        ],
-        'race' => [
-            'column' => 'string',
-        ],
+        'proficiency_bonus' => ['column' => 'string'],
+        'race' => ['column' => 'string'],
         'religion' => [
             'attribute' => 'Int',
             'column' => 'json',
             'template' => 'skill',
         ],
-        'skin' => [
-            'column' => 'string',
-        ],
+        'skin' => ['column' => 'string'],
         'sleight_of_hand' => [
             'attribute' => 'Dex',
             'column' => 'json',
             'label' => 'Sleight of Hand',
             'template' => 'skill',
         ],
-        'speed' => [
-            'column' => 'string',
-        ],
-        'spell_attack_bonus' => [
-            'column' => 'string',
-        ],
+        'speed' => ['column' => 'string'],
+        'spell_attack_bonus' => ['column' => 'string'],
         'spell_save_dc' => [
             'column' => 'string',
             'label' => 'Spell Save DC',
         ],
         'spell_levels' => [
             'column' => 'json',
-            'groups' => range(1, 9),
+            'groups' => ['one', 'two', 'three', 'four', 'five', 'size', 'seven', 'eight', 'nine'],
             'template' => 'spell-level',
         ],
-        'spellcasting_class' => [
-            'column' => 'string',
-        ],
-        'spellcasting_ability' => [
-            'column' => 'string',
-        ],
+        'spellcasting_class' => ['column' => 'string'],
+        'spellcasting_ability' => ['column' => 'string'],
         'spells' => [
             'column' => 'json',
-            'groups' => range(0, 9),
+            'groups' => ['cantrips', 'one', 'two', 'three', 'four', 'five', 'size', 'seven', 'eight', 'nine'],
             'template' => 'spell',
         ],
         'stealth' => [
@@ -302,12 +266,10 @@ return [
         ],
         'weapons' => [
             'column' => 'json',
-            'groups' => INF,
+            'groups' => ['one', 'two', 'three'],
             'template' => 'weapon',
         ],
-        'weight' => [
-            'column' => 'string',
-        ],
+        'weight' => ['column' => 'string'],
         'wisdom' => [
             'column' => 'json',
             'template' => 'attribute',
@@ -327,17 +289,15 @@ return [
     */
     'json' => [
         'attribute' => [
-            'bonus' => [],
-            'proficiency' => [
-                'template' => 'checkbox',
-            ],
-            'saving_throw' => [],
+            'proficiency' => ['template' => 'checkbox'],
             'value' => [],
+            'bonus' => [],
+            'saving_throw' => [],
         ],
         'death-save' => [
-            ['template' => 'checkbox'],
-            ['template' => 'checkbox'],
-            ['template' => 'checkbox'],
+            'one' => ['template' => 'checkbox'],
+            'two' => ['template' => 'checkbox'],
+            'three' => ['template' => 'checkbox'],
         ],
         'hit-dice' => [
             'total' => [],
@@ -351,25 +311,21 @@ return [
                 'label' => 'Current Hit Points',
                 'template' => 'textarea',
             ],
-            'maximum' => [
-                'label' => 'Hit Points Maximum',
-            ],
+            'maximum' => ['label' => 'Hit Points Maximum'],
             'temporary' => [
                 'label' => 'Temporary Hit Points',
                 'template' => 'textarea',
             ],
         ],
         'money' => [
-            'cp' => [],
-            'sp' => [],
-            'ep' => [],
-            'gp' => [],
-            'pp' => [],
+            'cp' => ['label' => 'CP'],
+            'sp' => ['label' => 'SP'],
+            'ep' => ['label' => 'EP'],
+            'gp' => ['label' => 'GP'],
+            'pp' => ['label' => 'PP'],
         ],
         'skill' => [
-            'proficiency' => [
-                'template' => 'checkbox',
-            ],
+            'proficiency' => ['template' => 'checkbox'],
             'value' => [],
         ],
         'spell-level' => [
@@ -378,21 +334,13 @@ return [
             'slots_total' => [],
         ],
         'spell' => [
-            'book_page_description' => [
-                'label' => 'Book & Page/Description'
-            ],
+            'book_page_description' => ['label' => 'Book & Page/Description'],
             'name' => [],
-            'prepared' => [
-                'template' => 'checkbox',
-            ],
+            'prepared' => ['template' => 'checkbox'],
         ],
         'weapon' => [
-            'attack_bonus' => [
-                'label' => 'Atk Bonus',
-            ],
-            'damage_type' => [
-                'label' => 'Damage/Type',
-            ],
+            'attack_bonus' => ['label' => 'Atk Bonus'],
+            'damage_type' => ['label' => 'Damage/Type'],
             'name' => [],
         ],
     ],
