@@ -1,4 +1,4 @@
-<div>
+<div class="grid grid-cols-1 gap-4">
     <x-fields.text
         :name="$this->fieldName('value')" :label="$this->fieldLabel('Value')"
     />

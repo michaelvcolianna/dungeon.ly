@@ -1,5 +1,5 @@
-<div>
-    <div>
+<div class="grid grid-cols-1 gap-4">
+    <div class="grid grid-cols-1 gap-4">
         <x-fields.text
             :name="$this->fieldName('1.name')" label="Weapon 1 Name"
         />
@@ -12,7 +12,7 @@
         />
     </div>
 
-    <div>
+    <div class="grid grid-cols-1 gap-4">
         <x-fields.text
             :name="$this->fieldName('2.name')" label="Weapon 2 Name"
         />
@@ -25,7 +25,7 @@
         />
     </div>
 
-    <div>
+    <div class="grid grid-cols-1 gap-4">
         <x-fields.text
             :name="$this->fieldName('3.name')" label="Weapon 3 Name"
         />

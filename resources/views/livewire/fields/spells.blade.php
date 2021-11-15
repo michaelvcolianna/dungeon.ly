@@ -1,11 +1,11 @@
-<div>
+<div class="grid grid-cols-1 gap-4">
     <x-fields.textarea
         name="character.spells.0" label="Cantrips" rows="8"
         wire:key="spell-level-0-spells"
     />
 
     @foreach(range(1, 9) as $level)
-        <div wire:key="spell-level-{{ $level }}">
+        <div wire:key="spell-level-{{ $level }}" class="grid grid-cols-1 gap-4">
             <div class="block font-medium text-sm text-gray-700">
                 Spell Level <span class="text-black">{{ $level }}</span>
             </div>
