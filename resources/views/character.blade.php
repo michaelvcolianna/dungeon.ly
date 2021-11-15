@@ -66,21 +66,15 @@
                     <livewire:fields.death-saves name="character.death_saves" label="Death Saves" />
                     <livewire:fields.weapons name="character.weapons" label="Weapons" />
                     <livewire:fields.textarea name="character.attacks_spellcasting" label="Attacks & Spellcasting" rows="10" />
+                    <livewire:fields.money name="character.money" label="Money" />
+                    <livewire:fields.textarea name="character.equipment" label="Equipment" rows="10" />
+                    <livewire:fields.textarea name="character.treasure" label="Treasure" rows="10" />
                     <livewire:fields.text name="character.spellcasting_class" label="Spellcasting Class" />
                     <livewire:fields.text name="character.spellcasting_ability" label="Spellcasting Ability" />
                     <livewire:fields.text name="character.spell_save_dc" label="Spell Save DC" />
                     <livewire:fields.text name="character.spell_attack_bonus" label="Spell Attack Bonus" />
-                    {{-- @todo Spells & levels template --}}
-                    <livewire:fields.money name="character.money" label="Money" />
-                    <livewire:fields.textarea name="character.equipment" label="Equipment" rows="10" />
-                    <livewire:fields.textarea name="character.treasure" label="Treasure" rows="10" />
+                    <livewire:fields.spells />
                 </div>
-
-
-                {{--
-                <x-character.field name="character.spell_levels" />
-                <x-character.field name="character.spells" />
-                --}}
             </div>
         </div>
     </div>

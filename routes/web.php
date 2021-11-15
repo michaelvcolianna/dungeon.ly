@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/debug', function() {
-    dd(config('dnd'));
+    // debug route
 });
 
 Route::get('/', function() {
