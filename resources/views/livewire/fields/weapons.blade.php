@@ -1,40 +1,39 @@
 <div class="grid grid-cols-1 gap-4">
-    <div class="grid grid-cols-1 gap-4">
-        <x-fields.text
-            :name="$this->fieldName('1.name')" label="Weapon 1 Name"
-        />
-        <x-fields.text
-            :name="$this->fieldName('1.atk_bonus')" label="Weapon 1 Atk Bonus"
-        />
-        <x-fields.text
-            :name="$this->fieldName('1.damage_type')"
-            label="Weapon 1 Damage/Type"
-        />
-    </div>
+    @for($i = 1; $i < 4; $i++)
+        <div>
+            <div class="block font-medium text-sm text-gray-700">
+                Weapon {{ $i }}
+            </div>
 
-    <div class="grid grid-cols-1 gap-4">
-        <x-fields.text
-            :name="$this->fieldName('2.name')" label="Weapon 2 Name"
-        />
-        <x-fields.text
-            :name="$this->fieldName('2.atk_bonus')" label="Weapon 2 Atk Bonus"
-        />
-        <x-fields.text
-            :name="$this->fieldName('2.damage_type')"
-            label="Weapon 2 Damage/Type"
-        />
-    </div>
+            <div class="grid grid-cols-2 gap-4">
+                <x-fields.text
+                    :name="$this->fieldName($i . '.name')" label="Name"
+                />
 
-    <div class="grid grid-cols-1 gap-4">
-        <x-fields.text
-            :name="$this->fieldName('3.name')" label="Weapon 3 Name"
-        />
-        <x-fields.text
-            :name="$this->fieldName('3.atk_bonus')" label="Weapon 3 Atk Bonus"
-        />
-        <x-fields.text
-            :name="$this->fieldName('3.damage_type')"
-            label="Weapon 3 Damage/Type"
-        />
-    </div>
+                <x-fields.text
+                    :name="$this->fieldName($i . '.atk_bonus')"
+                    label="Atk Bonus"
+                />
+
+                <div class="col-span-2">
+                    <label
+                        for="{{ $this->fieldName($i . '.damage_type') }}"
+                        class="block font-medium text-sm text-gray-700"
+                    >
+                        Damage/Type
+                    </label>
+
+                    <input
+                        type="text"
+                        id="{{ $this->fieldName($i . '.damage_type') }}"
+                        wire:model.debounce.500ms="{{ $this->fieldName($i . '.damage_type') }}"
+                        class="
+                            border-gray-300 focus:border-indigo-300 focus:ring w-full
+                            focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm
+                        "
+                    />
+                </div>
+            </div>
+        </div>
+    @endfor
 </div>

@@ -1,29 +1,25 @@
 <div>
-    <div class="block font-medium text-sm text-gray-700">
-        Death Saves
+    <div class="grid grid-cols-6 gap-4">
+        <div class="block font-medium text-sm text-gray-700 col-span-3">
+            Death Save Successes
+        </div>
+
+        @for($i = 1; $i < 4; $i++)
+            <x-fields.checkbox
+                :name="$this->fieldName('successes.' . $i)" :label="$i"
+            />
+        @endfor
     </div>
 
-    <div class="grid grid-cols-3 gap-4">
-        <x-fields.checkbox
-            :name="$this->fieldName('successes.1')" label="Success 1"
-        />
-        <x-fields.checkbox
-            :name="$this->fieldName('successes.2')" label="Success 2"
-        />
-        <x-fields.checkbox
-            :name="$this->fieldName('successes.3')" label="Success 3"
-        />
-    </div>
+    <div class="grid grid-cols-6 gap-4">
+        <div class="block font-medium text-sm text-gray-700 col-span-3">
+            Death Save Failures
+        </div>
 
-    <div class="grid grid-cols-3 gap-4">
-        <x-fields.checkbox
-            :name="$this->fieldName('failures.1')" label="Failure 1"
-        />
-        <x-fields.checkbox
-            :name="$this->fieldName('failures.2')" label="Failure 2"
-        />
-        <x-fields.checkbox
-            :name="$this->fieldName('failures.3')" label="Failure 3"
-        />
+        @for($i = 1; $i < 4; $i++)
+            <x-fields.checkbox
+                :name="$this->fieldName('failures.' . $i)" :label="$i"
+            />
+        @endfor
     </div>
 </div>

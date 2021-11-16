@@ -1,31 +1,34 @@
 <div class="grid grid-cols-1 gap-4">
+    <div class="block font-bold text-lg text-gray-700">
+        Cantrips
+    </div>
+
     <x-fields.textarea
-        name="character.spells.0" label="Cantrips" rows="8"
-        wire:key="spell-level-0-spells"
+        name="character.spells.0" label="List" rows="5"
     />
 
-    @foreach(range(1, 9) as $level)
-        <div wire:key="spell-level-{{ $level }}" class="grid grid-cols-1 gap-4">
-            <div class="block font-medium text-sm text-gray-700">
-                Spell Level <span class="text-black">{{ $level }}</span>
+    @for($i = 1; $i < 10; $i++)
+        <div class="grid grid-cols-1 gap-4">
+            <div class="block font-bold text-lg text-gray-700">
+                Spell Level {{ $i }}
             </div>
 
-            <x-fields.text
-                name="character.spell_levels.{{ $level }}.slots_total"
-                label="Slots Total"
-                wire:key="spell-level-{{ $level }}-slots-total"
-            />
+            <div class="grid grid-cols-2 gap-4">
+                <x-fields.text
+                    name="character.spell_levels.{{ $i }}.slots_total"
+                    label="Slots Total"
+                />
 
-            <x-fields.text
-                name="character.spell_levels.{{ $level }}.slots_expended"
-                label="Slots Expended"
-                wire:key="spell-level-{{ $level }}-slots-expended"
-            />
+                <x-fields.text
+                    name="character.spell_levels.{{ $i }}.slots_expended"
+                    label="Slots Expended"
+                />
+            </div>
+
             <x-fields.textarea
-                name="character.spells.{{ $level }}" rows="8"
-                label="Spells (Prepared / Name / Description)"
-                wire:key="spell-level-{{ $level }}-spells"
+                name="character.spells.{{ $i }}" rows="5"
+                label="List (Prepared / Name / Description)"
             />
         </div>
-    @endforeach
+    @endfor
 </div>
