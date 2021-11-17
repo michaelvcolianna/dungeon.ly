@@ -40,7 +40,7 @@
                         <livewire:fields.textarea name="character.allies_organizations" label="Allies & Organizations" rows="10" />
                     </div>
 
-                    <div class="md:flex flex-col justify-end">
+                    <div class="md:flex flex-col justify-end lg:justify-start">
                         <livewire:fields.textarea name="character.features_traits" label="Features & Traits" rows="20" />
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                     Attributes
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-none md:grid-rows-3 md:grid-flow-col gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-none md:grid-rows-3 md:grid-flow-col lg:grid-cols-2 lg:grid-rows-none lg:grid-flow-row gap-4">
                     <livewire:fields.attribute name="character.strength" label="Strength" />
                     <livewire:fields.attribute name="character.dexterity" label="Dexterity" />
                     <livewire:fields.attribute name="character.constitution" label="Constitution" />
@@ -72,16 +72,21 @@
                     <livewire:fields.attribute name="character.charisma" label="Charisma" />
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <livewire:fields.text name="character.proficiency_bonus" label="Proficiency Bonus" />
-                    <livewire:fields.text name="character.passive_wisdom" label="Passive Wisdom (Perception)" />
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="lg:col-start-2">
+                        <livewire:fields.text name="character.proficiency_bonus" label="Proficiency Bonus" />
+                    </div>
+
+                    <div>
+                        <livewire:fields.text name="character.passive_wisdom" label="Passive Wisdom (Perception)" />
+                    </div>
                 </div>
 
                 <div class="block font-bold text-lg text-gray-700">
                     Skills
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <livewire:fields.skill name="character.acrobatics" label="Acrobatics" attribute="Dex" />
                     <livewire:fields.skill name="character.animal_handling" label="Animal Handling" attribute="Wis" />
                     <livewire:fields.skill name="character.arcana" label="Arcana" attribute="Int" />
@@ -106,23 +111,25 @@
                     Combat
                 </div>
 
-                <div class="grid grid-cols-3 gap-4">
-                    <livewire:fields.text name="character.armor_class" label="Armor Class" />
-                    <livewire:fields.text name="character.initiative" label="Initiative" />
-                    <livewire:fields.text name="character.speed" label="Speed" />
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <livewire:fields.hit-points name="character.hit_points" label="Hit Points" />
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-3 lg:grid-cols-1 gap-4">
+                        <livewire:fields.text name="character.armor_class" label="Armor Class" />
+                        <livewire:fields.text name="character.initiative" label="Initiative" />
+                        <livewire:fields.text name="character.speed" label="Speed" />
                     </div>
 
-                    <div>
-                        <livewire:fields.hit-dice name="character.hit_dice" label="Hit Dice" />
-                        <livewire:fields.death-saves name="character.death_saves" label="Death Saves" />
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <livewire:fields.hit-points name="character.hit_points" label="Hit Points" />
+                        </div>
+
+                        <div>
+                            <livewire:fields.hit-dice name="character.hit_dice" label="Hit Dice" />
+                            <livewire:fields.death-saves name="character.death_saves" label="Death Saves" />
+                        </div>
                     </div>
 
-                    <div class="col-span-2">
+                    <div class="lg:col-span-2">
                         <livewire:fields.textarea name="character.attacks_spellcasting" label="Attacks & Spellcasting" rows="10" />
                     </div>
                 </div>

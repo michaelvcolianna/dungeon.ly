@@ -3,7 +3,7 @@
         {{ $label }}
     </div>
 
-    <div class="grid grid-cols-2 xs:grid-cols-4 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-2 xs:grid-cols-4 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <x-fields.text :name="$this->fieldName('value')" label="Value" />
 
         <x-fields.text :name="$this->fieldName('bonus')" label="Bonus" />

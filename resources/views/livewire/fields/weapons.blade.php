@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     @for($i = 1; $i < 4; $i++)
-        <div class="grid grid-cols-2 md:grid-cols-1 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4">
             <x-fields.text
                 :name="$this->fieldName($i . '.name')"
                 label="Weapon {{ $i }} Name"
@@ -11,7 +11,7 @@
                 label="Atk Bonus"
             />
 
-            <div class="col-span-2 md:col-auto">
+            <div class="col-span-2 md:col-auto lg:col-span-2">
                 <label
                     for="{{ $this->fieldName($i . '.damage_type') }}"
                     class="block font-medium text-sm text-gray-700"
