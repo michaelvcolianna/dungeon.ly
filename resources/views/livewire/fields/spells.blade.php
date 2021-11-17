@@ -1,11 +1,13 @@
-<div class="grid grid-cols-1 gap-4">
-    <div class="block font-bold text-lg text-gray-700">
-        Cantrips
-    </div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 gap-4 self-start">
+        <div class="block font-bold text-lg text-gray-700">
+            Cantrips
+        </div>
 
-    <x-fields.textarea
-        name="character.spells.0" label="List" rows="5"
-    />
+        <x-fields.textarea
+            name="character.spells.0" label="List" rows="5"
+        />
+    </div>
 
     @for($i = 1; $i < 10; $i++)
         <div class="grid grid-cols-1 gap-4">
