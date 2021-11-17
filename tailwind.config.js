@@ -15,6 +15,10 @@ module.exports = {
                 main: ['Alegreya', ...defaultTheme.fontFamily.serif],
             },
         },
+        screens: {
+            'xs': '414px',
+            ...defaultTheme.screens,
+        },
     },
 
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],

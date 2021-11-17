@@ -90,11 +90,14 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-4 items-start">
-                    <livewire:fields.hit-points name="character.hit_points" label="Hit Points" />
+                    <div class="row-span-2">
+                        <livewire:fields.hit-points name="character.hit_points" label="Hit Points" />
+                    </div>
+
                     <livewire:fields.hit-dice name="character.hit_dice" label="Hit Dice" />
+                    <livewire:fields.death-saves name="character.death_saves" label="Death Saves" />
                 </div>
 
-                <livewire:fields.death-saves name="character.death_saves" label="Death Saves" />
                 <livewire:fields.weapons name="character.weapons" label="Weapons" />
                 <livewire:fields.textarea name="character.attacks_spellcasting" label="Attacks & Spellcasting" rows="10" />
 
