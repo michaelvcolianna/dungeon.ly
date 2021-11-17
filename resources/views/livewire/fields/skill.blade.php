@@ -1,10 +1,15 @@
 <div>
-    <div class="block font-bold text-sm text-gray-700">
+    <div
+        class="block font-bold text-sm text-gray-700"
+        id="fast-fields--{{ $name }}"
+    >
         {{ $label }} ({{ $attribute }})
     </div>
 
     <div class="grid grid-cols-4 gap-4">
-        <div class="col-span-3">
+        <div
+            class="col-span-3" id="fast-field--{{ $this->fieldName('value') }}"
+        >
             <label
                 for="{{ $this->fieldName('value') }}"
                 class="block font-medium text-sm text-gray-700"
@@ -23,7 +28,7 @@
             />
         </div>
 
-        <div>
+        <div id="fast-field--{{ $this->fieldName('proficiency') }}">
             <label
                 for="{{ $this->fieldName('proficiency') }}" class="
                     block font-medium text-sm text-gray-700

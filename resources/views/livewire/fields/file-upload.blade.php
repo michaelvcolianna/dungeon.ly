@@ -4,6 +4,7 @@
         {{ $this->getAlpinePreview() }}: null,
         label: {{ $label ? 'true' : 'false' }}
     }"
+    id="fast-field--{{ $name }}"
 >
     <label
         for="{{ $name }}" x-show="label"

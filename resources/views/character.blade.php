@@ -6,7 +6,10 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white sm:rounded-md shadow-md p-4 grid grid-cols-1 gap-4">
-                <div class="block font-bold text-lg text-gray-700">
+                <div
+                    class="block font-bold text-lg text-gray-700"
+                    id="fast-fields--information"
+                >
                     Information
                 </div>
 
@@ -59,7 +62,10 @@
                     <livewire:fields.textarea name="character.flaws" label="Flaws" />
                 </div>
 
-                <div class="block font-bold text-lg text-gray-700">
+                <div
+                    class="block font-bold text-lg text-gray-700"
+                    id="fast-fields--attributes"
+                >
                     Attributes
                 </div>
 
@@ -82,7 +88,10 @@
                     </div>
                 </div>
 
-                <div class="block font-bold text-lg text-gray-700">
+                <div
+                    class="block font-bold text-lg text-gray-700"
+                    id="fast-fields--skills"
+                >
                     Skills
                 </div>
 
@@ -107,7 +116,10 @@
                     <livewire:fields.skill name="character.survival" label="Survival" attribute="Wis" />
                 </div>
 
-                <div class="block font-bold text-lg text-gray-700">
+                <div
+                    class="block font-bold text-lg text-gray-700"
+                    id="fast-fields--combat"
+                >
                     Combat
                 </div>
 
@@ -134,13 +146,19 @@
                     </div>
                 </div>
 
-                <div class="block font-bold text-lg text-gray-700">
+                <div
+                    class="block font-bold text-lg text-gray-700"
+                    id="fast-fields--weapons"
+                >
                     Weapons
                 </div>
 
                 <livewire:fields.weapons name="character.weapons" label="Weapons" />
 
-                <div class="block font-bold text-lg text-gray-700">
+                <div
+                    class="block font-bold text-lg text-gray-700"
+                    id="fast-fields--gear"
+                >
                     Gear
                 </div>
 
@@ -151,7 +169,10 @@
                     <livewire:fields.textarea name="character.treasure" label="Treasure" rows="10" />
                 </div>
 
-                <div class="block font-bold text-lg text-gray-700">
+                <div
+                    class="block font-bold text-lg text-gray-700"
+                    id="fast-fields--information"
+                >
                     Magic
                 </div>
 

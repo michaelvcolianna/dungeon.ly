@@ -1,4 +1,4 @@
-<div class="mt-4 grid grid-cols-1 gap-4">
+<div class="mt-4 grid grid-cols-1 gap-4" id="fast-fields--{{ $name }}">
     <div>
         <div class="block font-medium text-sm text-gray-700">
             Death Save Successes

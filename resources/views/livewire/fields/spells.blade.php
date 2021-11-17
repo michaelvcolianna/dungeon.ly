@@ -6,6 +6,7 @@
 
         <x-fields.textarea
             name="character.spells.0" label="List" rows="5"
+            id="fast-fields--character.spells.0"
         />
     </div>
 
@@ -18,11 +19,13 @@
             <div class="grid grid-cols-2 gap-4">
                 <x-fields.text
                     name="character.spell_levels.{{ $i }}.slots_total"
+                    id="fast-fields--character.spell_levels.{{ $i }}.slots_total"
                     label="Slots Total"
                 />
 
                 <x-fields.text
                     name="character.spell_levels.{{ $i }}.slots_expended"
+                    id="fast-fields--character.spell_levels.{{ $i }}.slots_expended"
                     label="Slots Expended"
                 />
             </div>
@@ -30,6 +33,7 @@
             <x-fields.textarea
                 name="character.spells.{{ $i }}" rows="5"
                 label="List (Prepared / Name / Description)"
+                id="fast-fields--character.spells.{{ $i }}"
             />
         </div>
     @endfor

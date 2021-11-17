@@ -55,16 +55,17 @@ class Spells extends Component
     {
         $this->character->save();
 
-        // $this->emit($this->eventName());
+        $this->emit($this->eventName($name));
     }
 
     /**
      * Make the event name text.
      *
+     * @param  string  $name
      * @return string
      */
-    protected function eventName()
+    protected function eventName($name)
     {
-        // return 'updated' . Str::of($this->name)->replace('.', '_')->studly();
+        return 'updated' . Str::of($name)->replace('.', '_')->studly();
     }
 }
