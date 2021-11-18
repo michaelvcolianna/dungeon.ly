@@ -9,20 +9,17 @@
     <div class="grid grid-cols-2 xs:grid-cols-4 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <x-fields.text
             :name="$this->fieldName('value')" label="Value"
-            id="fast-field--{{ $this->fieldName('value') }}"
         />
 
         <x-fields.text
             :name="$this->fieldName('bonus')" label="Bonus"
-            id="fast-field--{{ $this->fieldName('bonus') }}"
         />
 
         <x-fields.text
             :name="$this->fieldName('saving_throw')" label="Saving Throw"
-            id="fast-field--{{ $this->fieldName('saving_throw') }}"
         />
 
-        <div id="fast-field--{{ $this->fieldName('proficiency') }}">
+        <div>
             <label
                 for="{{ $this->fieldName('proficiency') }}" class="
                     block font-medium text-sm text-gray-700

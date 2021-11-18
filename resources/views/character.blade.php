@@ -8,7 +8,7 @@
             <div class="bg-white sm:rounded-md shadow-md p-4 grid grid-cols-1 gap-4">
                 <div
                     class="block font-bold text-lg text-gray-700"
-                    id="fast-fields--information"
+                    id="fast-field--information"
                 >
                     Information
                 </div>
@@ -64,7 +64,7 @@
 
                 <div
                     class="block font-bold text-lg text-gray-700"
-                    id="fast-fields--attributes"
+                    id="fast-field--attributes"
                 >
                     Attributes
                 </div>
@@ -90,7 +90,7 @@
 
                 <div
                     class="block font-bold text-lg text-gray-700"
-                    id="fast-fields--skills"
+                    id="fast-field--skills"
                 >
                     Skills
                 </div>
@@ -118,7 +118,7 @@
 
                 <div
                     class="block font-bold text-lg text-gray-700"
-                    id="fast-fields--combat"
+                    id="fast-field--combat"
                 >
                     Combat
                 </div>
@@ -148,7 +148,7 @@
 
                 <div
                     class="block font-bold text-lg text-gray-700"
-                    id="fast-fields--weapons"
+                    id="fast-field--weapons"
                 >
                     Weapons
                 </div>
@@ -157,7 +157,7 @@
 
                 <div
                     class="block font-bold text-lg text-gray-700"
-                    id="fast-fields--gear"
+                    id="fast-field--gear"
                 >
                     Gear
                 </div>
@@ -171,7 +171,7 @@
 
                 <div
                     class="block font-bold text-lg text-gray-700"
-                    id="fast-fields--information"
+                    id="fast-field--information"
                 >
                     Magic
                 </div>
