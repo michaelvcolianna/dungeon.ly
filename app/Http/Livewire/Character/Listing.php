@@ -64,6 +64,7 @@ class Listing extends Component
             ]);
 
             $this->emit('updateCharacters');
+            logger('Emitted: updateCharacters');
         }
         catch(\Exception $e)
         {

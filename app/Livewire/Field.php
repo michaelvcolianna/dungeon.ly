@@ -57,6 +57,7 @@ abstract class Field extends Component
         $this->character->save();
 
         $this->emit($this->eventName());
+        logger('Emitted: ' . $this->eventName());
     }
 
     /**

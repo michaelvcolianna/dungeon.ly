@@ -56,6 +56,7 @@ class Spells extends Component
         $this->character->save();
 
         $this->emit($this->eventName($name));
+        logger('Emitted: ' . $this->eventName($name));
     }
 
     /**
