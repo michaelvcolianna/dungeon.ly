@@ -16,7 +16,18 @@ class Character extends BaseModel
     protected $appends = [
         'avatar_url',
         'group_symbol_url',
+        'is_npc',
     ];
+
+    /**
+     * Get the NPC status.
+     *
+     * @return boolean
+     */
+    public function getIsNpcAttribute()
+    {
+        return $this->trashed();
+    }
 
     /**
      * Get the URL to the character's avatar image.

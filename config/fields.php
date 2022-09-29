@@ -203,7 +203,6 @@ return [
             ],
             'weapons' => [
                 'model' => 'Weapon',
-                'multiple' => true,
             ],
             'attacks_spellcasting_notes' => [
                 'label' => 'Attacks & Spellcasting Notes',
@@ -418,7 +417,6 @@ return [
             ],
             'spells' => [
                 'model' => 'Spell',
-                'multiple' => true,
             ],
         ],
     ],

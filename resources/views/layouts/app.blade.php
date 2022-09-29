@@ -19,7 +19,7 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans">
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">

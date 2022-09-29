@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('character_id');
-            $table->string('label')->nullable();
+            $table->string('name')->nullable();
             $table->string('value')->nullable();
             $table->string('attribute')->nullable();
         });
