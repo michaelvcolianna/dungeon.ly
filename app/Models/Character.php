@@ -2,105 +2,87 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\AsArrayObject;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Character extends Model
+class Character extends BaseModel
 {
-    use HasFactory;
+    use SoftDeletes;
 
     /**
-     * The attributes that should be cast.
+     * The accessors to append to the model's array form.
      *
      * @var array
      */
-    protected $casts = [
-        'strength' => AsArrayObject::class,
-        'dexterity' => AsArrayObject::class,
-        'constitution' => AsArrayObject::class,
-        'intelligence' => AsArrayObject::class,
-        'wisdom' => AsArrayObject::class,
-        'charisma' => AsArrayObject::class,
-        'hit_points' => AsArrayObject::class,
-        'hit_dice' => AsArrayObject::class,
-        'death_saves' => AsArrayObject::class,
-        'spell_levels' => AsArrayObject::class,
-        'spells' => AsArrayObject::class,
-        'acrobatics' => AsArrayObject::class,
-        'animal_handling' => AsArrayObject::class,
-        'arcana' => AsArrayObject::class,
-        'athletics' => AsArrayObject::class,
-        'deception' => AsArrayObject::class,
-        'history' => AsArrayObject::class,
-        'insight' => AsArrayObject::class,
-        'intimidation' => AsArrayObject::class,
-        'investigation' => AsArrayObject::class,
-        'medicine' => AsArrayObject::class,
-        'money' => AsArrayObject::class,
-        'nature' => AsArrayObject::class,
-        'perception' => AsArrayObject::class,
-        'performance' => AsArrayObject::class,
-        'persuasion' => AsArrayObject::class,
-        'religion' => AsArrayObject::class,
-        'sleight_of_hand' => AsArrayObject::class,
-        'stealth' => AsArrayObject::class,
-        'survival' => AsArrayObject::class,
-        'weapons' => AsArrayObject::class,
+    protected $appends = [
+        'avatar_url',
+        'group_symbol_url',
     ];
 
     /**
-     * The attributes that aren't mass assignable.
+     * Get the URL to the character's avatar image.
      *
-     * @var array
-     */
-    protected $guarded = [
-        'id',
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
-    /**
-     * Get the team that the D&D character belongs to.
-     */
-    public function team()
-    {
-        return $this->belongsTo(Team::class);
-    }
-
-    /**
-     * Get the user that owns the D&D character.
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Get the URL to an image.
-     *
-     * @param  string  $image
      * @return string
      */
-    public function getImage($image)
+    public function getAvatarUrlAttribute()
     {
-        if($this->{$image})
-        {
-            return Storage::disk('public')->url($this->{$image});
-        }
+        return $this->getImageUrl('avatar');
+    }
 
-        if($image === 'appearance' && !$this->name)
-        {
-            return $this->user->profile_photo_url;
-        }
+    /**
+     * Get the URL to the character's group symbol image.
+     *
+     * @return string
+     */
+    public function getGroupSymbolUrlAttribute()
+    {
+        return $this->getImageUrl('group_symbol');
+    }
 
-        $name = ($image === 'appearance')
-            ? urlencode($this->name)
-            : 'NA';
-            ;
+    /**
+     * Get the attributes associated with the character.
+     */
+    public function attributes()
+    {
+        return $this->hasMany(Attribute::class);
+    }
 
-        return 'https://ui-avatars.com/api/?name=' . $name;
+    /**
+     * Get the saving throws associated with the character.
+     */
+    public function savingThrows()
+    {
+        return $this->hasMany(SavingThrow::class);
+    }
+
+    /**
+     * Get the skills associated with the character.
+     */
+    public function skills()
+    {
+        return $this->hasMany(Skill::class);
+    }
+
+    /**
+     * Get the death saves associated with the character.
+     */
+    public function deathSaves()
+    {
+        return $this->hasMany(DeathSave::class);
+    }
+
+    /**
+     * Get the weapons associated with the character.
+     */
+    public function weapons()
+    {
+        return $this->hasMany(Weapon::class);
+    }
+
+    /**
+     * Get the spell list associated with the character.
+     */
+    public function spellList()
+    {
+        return $this->hasOne(SpellList::class);
     }
 }

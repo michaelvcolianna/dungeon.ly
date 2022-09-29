@@ -16,25 +16,34 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
         Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])->name('policy.show');
     }
 
-    Route::group(['middleware' => ['auth', 'verified']], function () {
+    $authMiddleware = config('jetstream.guard')
+            ? 'auth:'.config('jetstream.guard')
+            : 'auth';
+
+    $authSessionMiddleware = config('jetstream.auth_session', false)
+            ? config('jetstream.auth_session')
+            : null;
+
+    Route::group(['middleware' => array_values(array_filter([$authMiddleware, $authSessionMiddleware]))], function () {
         // User & Profile...
-        Route::get('/user/profile', [UserProfileController::class, 'show'])
-                    ->name('profile.show');
+        Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile.show');
 
-        // API...
-        if (Jetstream::hasApiFeatures()) {
-            Route::get('/user/api-tokens', [ApiTokenController::class, 'index'])->name('api-tokens.index');
-        }
+        Route::group(['middleware' => 'verified'], function () {
+            // API...
+            if (Jetstream::hasApiFeatures()) {
+                Route::get('/user/api-tokens', [ApiTokenController::class, 'index'])->name('api-tokens.index');
+            }
 
-        // Teams...
-        if (Jetstream::hasTeamFeatures()) {
-            Route::get('/games/create', [TeamController::class, 'create'])->name('teams.create');
-            Route::get('/games/{team}', [TeamController::class, 'show'])->name('teams.show');
-            Route::put('/current-game', [CurrentTeamController::class, 'update'])->name('current-team.update');
+            // Teams...
+            if (Jetstream::hasTeamFeatures()) {
+                Route::get('/games/create', [TeamController::class, 'create'])->name('teams.create');
+                Route::get('/games/{team}', [TeamController::class, 'show'])->name('teams.show');
+                Route::put('/current-game', [CurrentTeamController::class, 'update'])->name('current-team.update');
 
-            Route::get('/game-invitations/{invitation}', [TeamInvitationController::class, 'accept'])
-                        ->middleware(['signed'])
-                        ->name('team-invitations.accept');
-        }
+                Route::get('/game-invitations/{invitation}', [TeamInvitationController::class, 'accept'])
+                            ->middleware(['signed'])
+                            ->name('team-invitations.accept');
+            }
+        });
     });
 });

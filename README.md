@@ -1,6 +1,6 @@
 # Dungeon.ly
 
-A work-in-progress helper for tabletop RPGs. Laravel 8.
+A work-in-progress helper for tabletop RPGs. Laravel 9.
 
 The eventual real version probably won't use PHP/Laravel. This currently exists as a proof-of-concept for whether its features would be useful and mainly is being implemented by my friends and I.
 
@@ -10,11 +10,11 @@ The eventual real version probably won't use PHP/Laravel. This currently exists 
 - Profile photos
 - Two-factor authentication
 - Teams, implemented as games
-- Dashboard with character listing
-- Individual character sheets w/fast finding for fields (D&D only at the moment)
 
 ### Planned features
 
+- Dashboard with character listing
+- Individual character sheets w/fast finding for fields (D&D only at the moment)
 - Individual dice roller
 - Dice roller linked to character sheet stats
 - Combat tracker w/DM and player interfaces
