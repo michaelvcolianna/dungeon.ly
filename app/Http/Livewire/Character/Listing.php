@@ -39,7 +39,7 @@ class Listing extends Component
     /**
      * Add a new character.
      *
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function addCharacter()
     {
@@ -49,25 +49,26 @@ class Listing extends Component
         ]);
 
         // Create the empty attributes and saving throws
-        foreach(config('character.attributes') as $attribute)
+        foreach(config('fields.character.attributes') as $name => $config)
         {
-            $data = [
-                'character_id' => $character->id,
-                'name' => $attribute,
-            ];
+            if($config['type'] === 'attribute')
+            {
+                $data = [
+                    'character_id' => $character->id,
+                    'name' => $name,
+                ];
 
-            Attribute::create($data);
-            SavingThrow::create($data);
+                Attribute::create($data);
+                SavingThrow::create($data);
+            }
         }
 
         // Create the empty skills
-        foreach(config('character.skills') as $skill)
+        foreach(config('fields.character.skills') as $name => $config)
         {
-            $config = config(sprintf('fields.characters.fields.%s', $skill));
-
             Skill::create([
                 'character_id' => $character->id,
-                'name' => $skill,
+                'name' => $name,
                 'attribute' => $config['attribute'],
             ]);
         }
@@ -79,8 +80,8 @@ class Listing extends Component
             {
                 DeathSave::create([
                     'character_id' => $character->id,
-                    'number' => $i,
                     'kind' => $kind,
+                    'number' => $i,
                 ]);
             }
         }
@@ -95,9 +96,11 @@ class Listing extends Component
         {
             SpellLevel::create([
                 'spell_list_id' => $spellList->id,
-                'level' => $i,
+                'number' => $i,
             ]);
         }
+
+        $this->chooseCharacter($character->id);
     }
 
     /**
@@ -120,15 +123,28 @@ class Listing extends Component
     {
         $output = [];
 
-        foreach(config('character.attributes') as $abbreviation => $attribute)
+        foreach($attributes as $attribute)
         {
             $output[] = sprintf(
                 '%s %s',
-                Str::title($abbreviation),
-                $attributes->where('name', $attribute)->first()->value ?? '?',
+                Str::of($attribute->name)->substr(0, 3)->title(),
+                $attribute->value ?? '?'
             );
         }
 
         return implode(' / ', $output);
+    }
+
+    /**
+     * Select a character for managing.
+     *
+     * @param  integer  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function chooseCharacter($id)
+    {
+        session()->put('character_id', $id);
+
+        return redirect()->route('character');
     }
 }

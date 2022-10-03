@@ -1,11 +1,14 @@
 <?php
 
+use App\Traits\ProcessesFieldsConfig;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    use ProcessesFieldsConfig;
+
     /**
      * Run the migrations.
      *
@@ -16,10 +19,10 @@ return new class extends Migration
         Schema::create('saving_throws', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes(); # Proficient
             $table->foreignId('character_id');
-            $table->string('name')->nullable();
-            $table->string('value')->nullable();
+
+            $this->addFields($table, config('fields.saving_throw'));
         });
     }
 

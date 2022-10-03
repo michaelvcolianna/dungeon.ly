@@ -1,11 +1,14 @@
 <?php
 
+use App\Traits\ProcessesFieldsConfig;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    use ProcessesFieldsConfig;
+
     /**
      * Run the migrations.
      *
@@ -17,10 +20,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('spell_list_id');
-            $table->string('level')->nullable();
-            $table->string('slots_total')->nullable();
-            $table->string('slots_expended')->nullable();
-            # spells: relationship with Spell::class
+
+            $this->addFields($table, config('fields.spell_level'));
         });
     }
 

@@ -4,11 +4,13 @@
             Characters
         </div>
 
-        @if($this->hasCharacters())
-            <div class="mt-6 text-gray-500">
+        <div class="mt-6 text-gray-500">
+            @if($this->hasCharacters())
                 This is a list of your characters.
-            </div>
-        @endif
+            @else
+                You don't have any characters yet.
+            @endif
+        </div>
 
         <div class="mt-6">
             <x-jet-button wire:click="addCharacter">Add One</x-jet-button>
@@ -26,7 +28,7 @@
                             <x-svg.image class="w-8 h-8 text-gray-400" />
                         @endif
 
-                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">{{ $character->name ?? 'Unnamed' }}</div>
+                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">{{ $character->character_name ?? 'Unnamed' }}</div>
                     </div>
 
                     <div class="ml-12">
@@ -35,22 +37,20 @@
                         </div>
 
                         <div class="mt-2 text-sm text-gray-500">
-                            {{ $character->class_level ?? 'Unknown class / level' }}
+                            {{ $character->class_level ?? 'Unknown class / level' }} ({{ $character->race ?? 'Unknown race' }})
                         </div>
 
                         <div class="mt-2 text-sm text-gray-500">
                             {{ $this->attributeSummary($character->attributes) }}
                         </div>
 
-                        <a href="#">
-                            <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
-                                <div>Manage character</div>
+                        <button class="mt-3 flex items-center text-sm font-semibold text-indigo-700" wire:click="chooseCharacter({{ $character->id }})">
+                            <div>Manage character</div>
 
-                                <div class="ml-1 text-indigo-500">
-                                    <x-svg.arrow class="w-4 h-4" />
-                                </div>
+                            <div class="ml-1 text-indigo-500">
+                                <x-svg.arrow class="w-4 h-4" />
                             </div>
-                        </a>
+                        </button>
                     </div>
                 </div>
             @endforeach

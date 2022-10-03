@@ -1,11 +1,14 @@
 <?php
 
+use App\Traits\ProcessesFieldsConfig;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    use ProcessesFieldsConfig;
+
     /**
      * Run the migrations.
      *
@@ -16,9 +19,10 @@ return new class extends Migration
         Schema::create('spells', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes(); # Prepared
             $table->foreignId('spell_level_id');
-            $table->string('name')->nullable();
+
+            $this->addFields($table, config('fields.spell'));
         });
     }
 

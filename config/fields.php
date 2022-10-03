@@ -2,9 +2,12 @@
 
 return [
 
-    'characters' => [
-        'parent' => 'User',
-        'fields' => [
+    'character' => [
+        'information' => [
+            'avatar_path' => [
+                'label' => 'Avatar',
+                'type' => 'image',
+            ],
             'character_name' => [
                 'type' => 'string',
             ],
@@ -42,172 +45,6 @@ return [
             'hair' => [
                 'type' => 'string',
             ],
-            'avatar_path' => [
-                'label' => 'Avatar',
-                'type' => 'image',
-            ],
-            'strength' => [
-                'model' => 'Attribute',
-            ],
-            'dexerity' => [
-                'model' => 'Attribute',
-            ],
-            'constitution' => [
-                'model' => 'Attribute',
-            ],
-            'intelligence' => [
-                'model' => 'Attribute',
-            ],
-            'wisdom' => [
-                'model' => 'Attribute',
-            ],
-            'charisma' => [
-                'model' => 'Attribute',
-            ],
-            'armor_class' => [
-                'type' => 'string',
-            ],
-            'initiative' => [
-                'type' => 'string',
-            ],
-            'speed' => [
-                'type' => 'string',
-            ],
-            'inspiration' => [
-                'type' => 'string',
-            ],
-            'proficiency_bonus' => [
-                'type' => 'string',
-            ],
-            'passive_wisdom' => [
-                'label' => 'Passive Wisdom (Perception)',
-                'type' => 'string',
-            ],
-            'strength_save' => [
-                'label' => 'Strength',
-                'model' => 'SavingThrow',
-            ],
-            'dexterity_save' => [
-                'label' => 'Dexterity',
-                'model' => 'SavingThrow',
-            ],
-            'constitution_save' => [
-                'label' => 'Constitution',
-                'model' => 'SavingThrow',
-            ],
-            'intelligence_save' => [
-                'label' => 'Intelligence',
-                'model' => 'SavingThrow',
-            ],
-            'wisdom_save' => [
-                'label' => 'Wisdom',
-                'model' => 'SavingThrow',
-            ],
-            'charisma_save' => [
-                'label' => 'Charisma',
-                'model' => 'SavingThrow',
-            ],
-            'acrobatics' => [
-                'model' => 'Skill',
-                'attribute' => 'Dex',
-            ],
-            'animal_handling' => [
-                'model' => 'Skill',
-                'attribute' => 'Wis',
-            ],
-            'arcana' => [
-                'model' => 'Skill',
-                'attribute' => 'Int',
-            ],
-            'athletics' => [
-                'model' => 'Skill',
-                'attribute' => 'Str',
-            ],
-            'deception' => [
-                'model' => 'Skill',
-                'attribute' => 'Chat',
-            ],
-            'history' => [
-                'model' => 'Skill',
-                'attribute' => 'Int',
-            ],
-            'insight' => [
-                'model' => 'Skill',
-                'attribute' => 'Wis',
-            ],
-            'intimidation' => [
-                'model' => 'Skill',
-                'attribute' => 'Chat',
-            ],
-            'investigation' => [
-                'model' => 'Skill',
-                'attribute' => 'Int',
-            ],
-            'medicine' => [
-                'model' => 'Skill',
-                'attribute' => 'Wis',
-            ],
-            'nature' => [
-                'model' => 'Skill',
-                'attribute' => 'Int',
-            ],
-            'perception' => [
-                'model' => 'Skill',
-                'attribute' => 'Wis',
-            ],
-            'performance' => [
-                'model' => 'Skill',
-                'attribute' => 'Cha',
-            ],
-            'persuasion' => [
-                'model' => 'Skill',
-                'attribute' => 'Cha',
-            ],
-            'religion' => [
-                'model' => 'Skill',
-                'attribute' => 'Int',
-            ],
-            'sleight_hand' => [
-                'label' => 'Sleight of Hand',
-                'model' => 'Skill',
-                'attribute' => 'Dex',
-            ],
-            'stealth' => [
-                'model' => 'Skill',
-                'attribute' => 'Dex',
-            ],
-            'survival' => [
-                'model' => 'Skill',
-                'attribute' => 'Wis',
-            ],
-            'hit_point_maximum' => [
-                'type' => 'string',
-            ],
-            'current_hit_points' => [
-                'type' => 'text',
-            ],
-            'temporary_hit_points' => [
-                'type' => 'text',
-            ],
-            'hit_dice_total' => [
-                'type' => 'string',
-            ],
-            'hit_dice_type' => [
-                'type' => 'text',
-            ],
-            'death_save_successes' => [
-                'type' => 'string',
-            ],
-            'death_save_failures' => [
-                'type' => 'string',
-            ],
-            'weapons' => [
-                'model' => 'Weapon',
-            ],
-            'attacks_spellcasting_notes' => [
-                'label' => 'Attacks & Spellcasting Notes',
-                'type' => 'text',
-            ],
             'personality_traits' => [
                 'type' => 'text',
             ],
@@ -231,6 +68,9 @@ return [
             'character_appearance' => [
                 'type' => 'text',
             ],
+            'character_backstory' => [
+                'type' => 'text',
+            ],
             'allies_organizations' => [
                 'label' => 'Allies & Organizations',
                 'type' => 'text',
@@ -242,13 +82,183 @@ return [
                 'label' => 'Group Symbol',
                 'type' => 'image',
             ],
-            'character_backstory' => [
+        ],
+        'attributes' => [
+            'strength' => [
+                'type' => 'attribute',
+                'abbreviation' => 'str',
+            ],
+            'dexterity' => [
+                'type' => 'attribute',
+                'abbreviation' => 'dex',
+            ],
+            'constitution' => [
+                'type' => 'attribute',
+                'abbreviation' => 'con',
+            ],
+            'intelligence' => [
+                'type' => 'attribute',
+                'abbreviation' => 'int',
+            ],
+            'wisdom' => [
+                'type' => 'attribute',
+                'abbreviation' => 'wis',
+            ],
+            'charisma' => [
+                'type' => 'attribute',
+                'abbreviation' => 'cha',
+            ],
+            'inspiration' => [
+                'type' => 'string',
+            ],
+            'proficiency_bonus' => [
+                'type' => 'string',
+            ],
+            'passive_wisdom' => [
+                'label' => 'Passive Wisdom (Perception)',
+                'type' => 'string',
+            ],
+        ],
+        'saving_throws' => [
+            'strength' => [
+                'type' => 'saving_throw',
+            ],
+            'dexterity' => [
+                'type' => 'saving_throw',
+            ],
+            'constitution' => [
+                'type' => 'saving_throw',
+            ],
+            'intelligence' => [
+                'type' => 'saving_throw',
+            ],
+            'wisdom' => [
+                'type' => 'saving_throw',
+            ],
+            'charisma' => [
+                'type' => 'saving_throw',
+            ],
+        ],
+        'skills' => [
+            'acrobatics' => [
+                'type' => 'skill',
+                'attribute' => 'Dex',
+            ],
+            'animal_handling' => [
+                'type' => 'skill',
+                'attribute' => 'Wis',
+            ],
+            'arcana' => [
+                'type' => 'skill',
+                'attribute' => 'Int',
+            ],
+            'athletics' => [
+                'type' => 'skill',
+                'attribute' => 'Str',
+            ],
+            'deception' => [
+                'type' => 'skill',
+                'attribute' => 'Cha',
+            ],
+            'history' => [
+                'type' => 'skill',
+                'attribute' => 'Int',
+            ],
+            'insight' => [
+                'type' => 'skill',
+                'attribute' => 'Wis',
+            ],
+            'intimidation' => [
+                'type' => 'skill',
+                'attribute' => 'Chat',
+            ],
+            'investigation' => [
+                'type' => 'skill',
+                'attribute' => 'Int',
+            ],
+            'medicine' => [
+                'type' => 'skill',
+                'attribute' => 'Wis',
+            ],
+            'nature' => [
+                'type' => 'skill',
+                'attribute' => 'Int',
+            ],
+            'perception' => [
+                'type' => 'skill',
+                'attribute' => 'Wis',
+            ],
+            'performance' => [
+                'type' => 'skill',
+                'attribute' => 'Cha',
+            ],
+            'persuasion' => [
+                'type' => 'skill',
+                'attribute' => 'Cha',
+            ],
+            'religion' => [
+                'type' => 'skill',
+                'attribute' => 'Int',
+            ],
+            'sleight_hand' => [
+                'label' => 'Sleight of Hand',
+                'type' => 'skill',
+                'attribute' => 'Dex',
+            ],
+            'stealth' => [
+                'type' => 'skill',
+                'attribute' => 'Dex',
+            ],
+            'survival' => [
+                'type' => 'skill',
+                'attribute' => 'Wis',
+            ],
+        ],
+        'combat' => [
+            'armor_class' => [
+                'type' => 'string',
+            ],
+            'initiative' => [
+                'type' => 'string',
+            ],
+            'speed' => [
+                'type' => 'string',
+            ],
+            'hit_point_maximum' => [
+                'type' => 'string',
+            ],
+            'current_hit_points' => [
                 'type' => 'text',
             ],
-            'additional_features_traits' => [
-                'label' => 'Additional Features & Traits',
+            'temporary_hit_points' => [
                 'type' => 'text',
             ],
+            'hit_dice_total' => [
+                'type' => 'string',
+            ],
+            'hit_dice_type' => [
+                'type' => 'text',
+            ],
+            'death_save_successes' => [
+                'type' => 'death_save',
+                'kind' => 'success',
+                'count' => 3,
+            ],
+            'death_save_failures' => [
+                'type' => 'death_save',
+                'kind' => 'failure',
+                'count' => 3,
+            ],
+            'weapons' => [
+                'type' => 'weapon',
+                'count' => 3,
+            ],
+            'attacks_spellcasting_notes' => [
+                'label' => 'Notes',
+                'type' => 'text',
+            ],
+        ],
+        'gear' => [
             'cp' => [
                 'label' => 'CP',
                 'type' => 'string',
@@ -275,6 +285,8 @@ return [
             'treasure' => [
                 'type' => 'text',
             ],
+        ],
+        'magic' => [
             'spellcasting_class' => [
                 'type' => 'string',
             ],
@@ -289,147 +301,101 @@ return [
                 'type' => 'string',
             ],
             'spell_list' => [
-                'model' => 'SpellList',
+                'type' => 'spell_list',
             ],
         ],
     ],
 
-    'attributes' => [
-        'parent' => 'Character',
-        'fields' => [
-            'label' => [
-                'type' => 'string',
-            ],
-            'value' => [
-                'type' => 'string',
-            ],
-            'bonus' => [
-                'type' => 'string',
-            ],
+    'attribute' => [
+        'name' => [
+            'type' => 'string',
+        ],
+        'value' => [
+            'type' => 'string',
+        ],
+        'bonus' => [
+            'type' => 'string',
         ],
     ],
 
-    'saving_throws' => [
-        'parent' => 'Character',
-        'fields' => [
-            'label' => [
-                'type' => 'string',
-            ],
-            'proficient' => [
-                'type' => 'boolean',
-            ],
-            'value' => [
-                'type' => 'string',
-            ],
+    'saving_throw' => [
+        'name' => [
+            'type' => 'string',
+        ],
+        'value' => [
+            'type' => 'string',
         ],
     ],
 
-    'skills' => [
-        'parent' => 'Character',
-        'fields' => [
-            'label' => [
-                'type' => 'string',
-            ],
-            'proficient' => [
-                'type' => 'boolean',
-            ],
-            'value' => [
-                'type' => 'string',
-            ],
-            'attribute' => [
-                'type' => 'string',
-            ],
+    'skill' => [
+        'name' => [
+            'type' => 'string',
+        ],
+        'value' => [
+            'type' => 'string',
+        ],
+        'attribute' => [
+            'type' => 'string',
         ],
     ],
 
-    'weapons' => [
-        'parent' => 'Character',
-        'fields' => [
-            'name' => [
-                'type' => 'string',
-            ],
-            'attack_bonus' => [
-                'type' => 'string',
-            ],
-            'damage_type' => [
-                'label' => 'Damage/Type',
-                'type' => 'string',
-            ],
+    'death_save' => [
+        'kind' => [
+            'type' => 'string',
+        ],
+        'number' => [
+            'type' => 'string',
         ],
     ],
 
-    'spell_lists' => [
-        'parent' => 'Character',
-        'fields' => [
-            'cantrips' => [
-                'type' => 'text',
-            ],
-            'spell_level_1' => [
-                'model' => 'SpellLevel',
-                'level' => 1,
-            ],
-            'spell_level_2' => [
-                'model' => 'SpellLevel',
-                'level' => 2,
-            ],
-            'spell_level_3' => [
-                'model' => 'SpellLevel',
-                'level' => 3,
-            ],
-            'spell_level_4' => [
-                'model' => 'SpellLevel',
-                'level' => 4,
-            ],
-            'spell_level_5' => [
-                'model' => 'SpellLevel',
-                'level' => 5,
-            ],
-            'spell_level_6' => [
-                'model' => 'SpellLevel',
-                'level' => 6,
-            ],
-            'spell_level_7' => [
-                'model' => 'SpellLevel',
-                'level' => 7,
-            ],
-            'spell_level_8' => [
-                'model' => 'SpellLevel',
-                'level' => 8,
-            ],
-            'spell_level_9' => [
-                'model' => 'SpellLevel',
-                'level' => 9,
-            ],
+    'weapon' => [
+        'number' => [
+            'type' => 'string',
+        ],
+        'name' => [
+            'type' => 'string',
+        ],
+        'attack_bonus' => [
+            'type' => 'string',
+        ],
+        'damage_type' => [
+            'label' => 'Damage/Type',
+            'type' => 'string',
         ],
     ],
 
-    'spell_levels' => [
-        'parent' => 'SpellList',
-        'fields' => [
-            'level' => [
-                'type' => 'string',
-            ],
-            'slots_total' => [
-                'type' => 'string',
-            ],
-            'slots_expended' => [
-                'type' => 'string',
-            ],
-            'spells' => [
-                'model' => 'Spell',
-            ],
+    'spell_list' => [
+        'cantrips' => [
+            'type' => 'text',
+        ],
+        'spell_levels' => [
+            'type' => 'spell_level',
+            'count' => 9,
         ],
     ],
 
-    'spells' => [
-        'parent' => 'SpellLevel',
-        'fields' => [
-            'prepared' => [
-                'type' => 'boolean',
-            ],
-            'name' => [
-                'type' => 'string',
-            ],
+    'spell_level' => [
+        'number' => [
+            'type' => 'string',
+        ],
+        'slots_total' => [
+            'type' => 'string',
+        ],
+        'slots_expended' => [
+            'type' => 'string',
+        ],
+        'spells' => [
+            'type' => 'spell',
+            'unlimited' => true,
+        ],
+    ],
+
+    'spell' => [
+        'name' => [
+            'type' => 'string',
+        ],
+        'description' => [
+            'type' => 'text',
         ],
     ],
 

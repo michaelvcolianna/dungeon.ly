@@ -28,4 +28,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/character', function () {
+        return view('character');
+    })->name('character');
 });
