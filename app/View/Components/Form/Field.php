@@ -9,6 +9,9 @@ class Field extends Component
 {
     use MakesLabels;
 
+    /** @var array */
+    public $config;
+
     /** @var string */
     public $label;
     public $model;
@@ -25,6 +28,7 @@ class Field extends Component
      */
     public function __construct($name, $config)
     {
+        $this->config = $config;
         $this->label = $this->buildLabel($name, $config);
         $this->model = implode('.', ['character', $name]);
         $this->name = $name;

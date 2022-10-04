@@ -126,7 +126,22 @@ class Character extends BaseModel
      */
     public function deathSaves()
     {
-        return $this->hasMany(DeathSave::class);
+        return $this->hasMany(DeathSave::class)->withTrashed();
+    }
+
+    /**
+     * Get a specific death save.
+     *
+     * @param  string  $kind
+     * @param  integer  $number
+     * @return \App\Models\DeathSave
+     */
+    public function deathSave($kind, $number)
+    {
+        return $this->deathSaves()->where([
+            ['kind', $kind],
+            ['number', $number],
+        ])->first();
     }
 
     /**

@@ -240,11 +240,13 @@ return [
                 'type' => 'text',
             ],
             'death_save_successes' => [
+                'label' => 'Successes',
                 'type' => 'death_save',
                 'kind' => 'success',
                 'count' => 3,
             ],
             'death_save_failures' => [
+                'label' => 'Failures',
                 'type' => 'death_save',
                 'kind' => 'failure',
                 'count' => 3,

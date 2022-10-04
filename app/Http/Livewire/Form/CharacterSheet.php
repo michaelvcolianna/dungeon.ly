@@ -71,7 +71,12 @@ class CharacterSheet extends Component
      */
     public function isRegular($field)
     {
-        return Str::contains($field['type'], ['image', 'string', 'text']);
+        return Str::contains($field['type'], [
+            'image',
+            'string',
+            'text',
+            'death_save',
+        ]);
     }
 
     /**

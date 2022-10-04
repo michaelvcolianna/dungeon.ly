@@ -15,6 +15,7 @@ class DeathSave extends BaseModel
      */
     protected $appends = [
         'is_checked',
+        'display_label',
     ];
 
     /**
@@ -33,5 +34,15 @@ class DeathSave extends BaseModel
     public function character()
     {
         return $this->belongsTo(Character::class);
+    }
+
+    /**
+     * Get the display label.
+     *
+     * @return string
+     */
+    public function getDisplayLabelAttribute()
+    {
+        return sprintf('#%s', $this->number);
     }
 }
