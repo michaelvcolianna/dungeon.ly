@@ -20,14 +20,4 @@ class Attribute extends BaseModel
     {
         return $this->belongsTo(Character::class);
     }
-
-    /**
-     * Get the label.
-     *
-     * @return boolean
-     */
-    public function getLabelAttribute()
-    {
-        return $this->buildLabel($this->name);
-    }
 }

@@ -20,7 +20,7 @@
     @if($this->hasCharacters())
         <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
             @foreach($this->allCharacters() as $character)
-                <div class="p-6">
+                <div class="p-6" wire:key="character-{{ $character->id }}">
                     <div class="flex items-center">
                         @if($character->avatar_url)
                             <img src="{{ $character->avatar_url }}" alt="{{ $character->name ?? 'Unnamed' }}'s avatar" height="24" width="24" class="w-8 h-8 rounded-full" />

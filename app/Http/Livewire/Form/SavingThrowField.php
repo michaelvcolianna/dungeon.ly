@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class SavingThrowField extends Component
 {
-    /** @var \App\Models\Attribute */
+    /** @var \App\Models\SavingThrow */
     public SavingThrow $saving_throw;
 
     /**
@@ -51,5 +51,15 @@ class SavingThrowField extends Component
     public function toggleObject()
     {
         $this->saving_throw->toggle();
+    }
+
+    /**
+     * Handle updates to data.
+     *
+     * @return void
+     */
+    public function updated()
+    {
+        $this->saving_throw->save();
     }
 }

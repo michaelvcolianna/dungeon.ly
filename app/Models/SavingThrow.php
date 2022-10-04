@@ -29,16 +29,6 @@ class SavingThrow extends BaseModel
     }
 
     /**
-     * Get the label.
-     *
-     * @return boolean
-     */
-    public function getLabelAttribute()
-    {
-        return $this->buildLabel($this->name);
-    }
-
-    /**
      * Get the character that has the saving throw.
      */
     public function character()

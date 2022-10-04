@@ -28,7 +28,7 @@ class Character extends BaseModel
     {
         if($id = session()->get('character_id'))
         {
-            return static::find($id);
+            return static::withTrashed()->find($id);
         }
 
         return null;
@@ -107,7 +107,18 @@ class Character extends BaseModel
      */
     public function skills()
     {
-        return $this->hasMany(Skill::class);
+        return $this->hasMany(Skill::class)->withTrashed();
+    }
+
+    /**
+     * Get a specific skill.
+     *
+     * @param  string  $name
+     * @return \App\Models\Skill
+     */
+    public function skill($name)
+    {
+        return $this->skills()->where('name', $name)->first();
     }
 
     /**

@@ -15,6 +15,8 @@ class Skill extends BaseModel
      */
     protected $appends = [
         'is_proficient',
+        'label',
+        'display_label',
     ];
 
     /**
@@ -33,5 +35,19 @@ class Skill extends BaseModel
     public function character()
     {
         return $this->belongsTo(Character::class);
+    }
+
+    /**
+     * Get the display label.
+     *
+     * @return string
+     */
+    public function getDisplayLabelAttribute()
+    {
+        return sprintf(
+            '%s (%s)',
+            $this->label,
+            $this->attribute
+        );
     }
 }
