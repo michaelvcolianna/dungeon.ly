@@ -2,18 +2,60 @@
 
 namespace App\Models;
 
+use App\Traits\MakesLabels;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class BaseModel extends Model
 {
+    use MakesLabels;
+
     /**
      * The attributes that aren't mass assignable.
      *
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * Get validation rules.
+     *
+     * @return array
+     */
+    public static function validationRules()
+    {
+        $rules = [];
+
+        $name = Str::singular((new static())->getTable());
+
+        $fields = config(sprintf('fields.%s', $name));
+
+        // Special processing for character sheet grouping
+        if($name === 'character')
+        {
+            $fields = [];
+
+            foreach(config('fields.character') as $group)
+            {
+                foreach($group as $field => $config)
+                {
+                    $fields[$field] = $config;
+                }
+            }
+        }
+
+        foreach($fields as $field => $config)
+        {
+            if(Str::contains($config['type'], ['string', 'text', 'image']))
+            {
+                $rules[sprintf('%s.%s', $name, $field)] = 'nullable';
+            }
+        }
+
+        return $rules;
+    }
 
     /**
      * Create a formatted string for field props.

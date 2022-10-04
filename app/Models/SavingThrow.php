@@ -15,6 +15,7 @@ class SavingThrow extends BaseModel
      */
     protected $appends = [
         'is_proficient',
+        'label',
     ];
 
     /**
@@ -25,6 +26,16 @@ class SavingThrow extends BaseModel
     public function getIsProficientAttribute()
     {
         return $this->trashed();
+    }
+
+    /**
+     * Get the label.
+     *
+     * @return boolean
+     */
+    public function getLabelAttribute()
+    {
+        return $this->buildLabel($this->name);
     }
 
     /**

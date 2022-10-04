@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
 
 class Character extends BaseModel
 {
@@ -19,29 +18,6 @@ class Character extends BaseModel
         'group_symbol_url',
         'is_npc',
     ];
-
-    /**
-     * Get the validation rules.
-     *
-     * @return array
-     */
-    public static function validationRules()
-    {
-        $rules = [];
-
-        foreach(config('fields.character') as $fields)
-        {
-            foreach($fields as $field => $config)
-            {
-                if(Str::contains($config['type'], ['string', 'text', 'image']))
-                {
-                    $rules[sprintf('character.%s', $field)] = 'nullable';
-                }
-            }
-        }
-
-        return $rules;
-    }
 
     /**
      * Get the current character.
@@ -112,7 +88,18 @@ class Character extends BaseModel
      */
     public function savingThrows()
     {
-        return $this->hasMany(SavingThrow::class);
+        return $this->hasMany(SavingThrow::class)->withTrashed();
+    }
+
+    /**
+     * Get a specific saving throw.
+     *
+     * @param  string  $name
+     * @return \App\Models\SavingThrow
+     */
+    public function savingThrow($name)
+    {
+        return $this->savingThrows()->where('name', $name)->first();
     }
 
     /**
