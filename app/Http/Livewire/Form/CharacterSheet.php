@@ -76,6 +76,7 @@ class CharacterSheet extends Component
             'string',
             'text',
             'death_save',
+            'weapon',
         ]);
     }
 

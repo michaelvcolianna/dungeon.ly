@@ -153,6 +153,17 @@ class Character extends BaseModel
     }
 
     /**
+     * Get a specific weapon.
+     *
+     * @param  integer  $number
+     * @return \App\Models\Weapon
+     */
+    public function weapon($number)
+    {
+        return $this->weapons()->where('number', $number)->first();
+    }
+
+    /**
      * Get the spell list associated with the character.
      */
     public function spellList()

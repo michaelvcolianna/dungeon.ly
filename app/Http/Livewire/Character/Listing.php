@@ -9,6 +9,7 @@ use App\Models\SavingThrow;
 use App\Models\Skill;
 use App\Models\SpellLevel;
 use App\Models\SpellList;
+use App\Models\Weapon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -84,6 +85,15 @@ class Listing extends Component
                     'number' => $i,
                 ]);
             }
+        }
+
+        // Create the weapons
+        for($i = 1; $i < 4; $i++)
+        {
+            Weapon::create([
+                'character_id' => $character->id,
+                'number' => $i,
+            ]);
         }
 
         // Create the spell list

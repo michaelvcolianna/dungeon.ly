@@ -251,13 +251,15 @@ return [
                 'kind' => 'failure',
                 'count' => 3,
             ],
-            'weapons' => [
+            'attacks_spellcasting_notes' => [
+                'label' => 'Attacks/Spellcasting Notes',
+                'type' => 'text',
+            ],
+        ],
+        'weapons' => [
+            'list' => [
                 'type' => 'weapon',
                 'count' => 3,
-            ],
-            'attacks_spellcasting_notes' => [
-                'label' => 'Notes',
-                'type' => 'text',
             ],
         ],
         'gear' => [
