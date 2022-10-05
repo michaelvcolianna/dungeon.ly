@@ -1,29 +1,23 @@
 @if($character)
     <div class="grid gap-4">
         @foreach($groups as $group => $fields)
-            <div class="md:grid md:grid-cols-3 md:gap-6" wire:key="group-{{ $group }}">
-                <div class="md:col-span-1 flex justify-between">
-                    <div class="px-4 sm:px-0">
-                        <h3 class="text-lg font-medium text-gray-900">{{ $this->buildLabel($group) }}</h3>
-                    </div>
-                </div>
+            <x-section :group="$group">
+                <x-slot:title>{{ $this->buildLabel($group) }}</x-slot:title>
 
-                <div class="mt-5 md:mt-0 md:col-span-2">
-                    <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-md">
-                        <div class="grid grid-cols-6 gap-6">
-                            @foreach($fields as $field => $config)
-                                <div class="col-span-6 sm:col-span-4" wire:key="field-{{ $field }}">
-                                    @if($this->isRegular($config))
-                                        <x-form.field :name="$field" :config="$config" />
-                                    @else
-                                        <livewire:is :component="$this->componentName($config)" :name="$field" :config="$config" />
-                                    @endif
-                                </div>
-                            @endforeach
+                <div class="grid grid-cols-6 gap-6">
+                    @foreach($fields as $field => $config)
+                        <div class="col-span-6 sm:col-span-4" wire:key="field-{{ $field }}">
+                            @if($this->isRegular($config))
+                                <x-form.field :name="$field" :config="$config" />
+                            @else
+                                <livewire:is :component="$this->componentName($config)" :name="$field" :config="$config" />
+                            @endif
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-            </div>
+            </x-section>
+
+            <x-jet-section-border />
         @endforeach
     </div>
 @else

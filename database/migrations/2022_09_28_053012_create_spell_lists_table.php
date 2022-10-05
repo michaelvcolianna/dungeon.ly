@@ -19,7 +19,6 @@ return new class extends Migration
         Schema::create('spell_lists', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $$table->softDeletes(); # Show/hide
             $table->foreignId('character_id');
 
             $this->addFields($table, config('fields.spell_list'));
