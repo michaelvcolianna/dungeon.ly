@@ -19,6 +19,18 @@
 
             <x-jet-section-border />
         @endforeach
+
+        @for($i = 1; $i < 10; $i++)
+            <x-section group="spell-level-{{ $i }}">
+                <x-slot:title>Spell Level {{ $i }}</x-slot:title>
+
+                <livewire:form.spell-level-field :number="$i" />
+            </x-section>
+
+            @if($i < 9)
+                <x-jet-section-border />
+            @endif
+        @endfor
     </div>
 @else
     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">

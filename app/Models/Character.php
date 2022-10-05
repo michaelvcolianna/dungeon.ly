@@ -170,4 +170,15 @@ class Character extends BaseModel
     {
         return $this->hasOne(SpellList::class);
     }
+
+    /**
+     * Get a specific spell level.
+     *
+     * @param  integer  $number
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function spellLevel($number)
+    {
+        return $this->spellList->spellLevels()->where('number', $number)->first();
+    }
 }

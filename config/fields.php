@@ -239,6 +239,10 @@ return [
             'hit_dice_type' => [
                 'type' => 'text',
             ],
+            'attacks_spellcasting_notes' => [
+                'label' => 'Attacks/Spellcasting Notes',
+                'type' => 'text',
+            ],
             'death_save_successes' => [
                 'label' => 'Successes',
                 'type' => 'death_save',
@@ -250,10 +254,6 @@ return [
                 'type' => 'death_save',
                 'kind' => 'failure',
                 'count' => 3,
-            ],
-            'attacks_spellcasting_notes' => [
-                'label' => 'Attacks/Spellcasting Notes',
-                'type' => 'text',
             ],
         ],
         'weapons' => [
@@ -389,16 +389,6 @@ return [
             'type' => 'string',
         ],
         'spells' => [
-            'type' => 'spell',
-            'unlimited' => true,
-        ],
-    ],
-
-    'spell' => [
-        'name' => [
-            'type' => 'string',
-        ],
-        'description' => [
             'type' => 'text',
         ],
     ],
