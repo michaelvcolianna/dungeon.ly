@@ -44,10 +44,10 @@ class Skill extends BaseModel
      */
     public function getDisplayLabelAttribute()
     {
-        return sprintf(
-            '%s (%s)',
-            $this->label,
-            $this->attribute
-        );
+        $label = config(sprintf('fields.character.skills.%s.label', $this->name))
+            ?? $this->label
+        ;
+
+        return sprintf('%s (%s)', $label, $this->attribute);
     }
 }
