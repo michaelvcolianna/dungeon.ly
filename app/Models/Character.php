@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Character extends BaseModel
 {
@@ -51,7 +52,7 @@ class Character extends BaseModel
      */
     public function getAvatarUrlAttribute()
     {
-        return $this->getImageUrl('avatar');
+        return $this->getImageUrl('avatar_path');
     }
 
     /**
@@ -61,7 +62,7 @@ class Character extends BaseModel
      */
     public function getGroupSymbolUrlAttribute()
     {
-        return $this->getImageUrl('group_symbol');
+        return $this->getImageUrl('group_symbol_path');
     }
 
     /**
@@ -180,5 +181,60 @@ class Character extends BaseModel
     public function spellLevel($number)
     {
         return $this->spellList->spellLevels()->where('number', $number)->first();
+    }
+
+    /**
+     * Update an image.
+     *
+     * @param  mixed  $image
+     * @param  string  $field
+     * @return void
+     */
+    public function updateImage($image, $field)
+    {
+        tap($this->{$field}, function($previous) use($image, $field) {
+            $this->forceFill([
+                $field => $image->storePublicly($field),
+            ])->save();
+
+            if($previous)
+            {
+                Storage::delete($previous);
+            }
+        });
+    }
+
+    /**
+     * Delete an image.
+     *
+     * @param  string  $field
+     * @return void
+     */
+    public function deleteImage($field)
+    {
+        if(is_null($this->{$field}))
+        {
+            return;
+        }
+
+        Storage::delete($this->{$field});
+
+        $this->forceFill([
+            $field => null,
+        ])->save();
+    }
+
+    /**
+     * Get an image URL.
+     *
+     * @param  string  $field
+     * @return string
+     */
+    public function getImageUrl($field)
+    {
+        return $this->{$field}
+            ? Storage::url($this->{$field})
+            : null
+        ;
     }
 }

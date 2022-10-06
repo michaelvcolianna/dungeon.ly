@@ -95,10 +95,14 @@ class CharacterSheet extends Component
     /**
      * Handle updates to data.
      *
+     * @param  string  $name
+     * @param  mixed  $value
      * @return void
      */
-    public function updated()
+    public function updated($name, $value)
     {
+        // @todo Convert empties into nulls
+
         $this->character->save();
     }
 }
