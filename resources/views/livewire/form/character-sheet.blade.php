@@ -1,16 +1,16 @@
 @if($character)
     <div class="grid gap-4">
         @foreach($groups as $group => $fields)
-            <x-section :group="$group">
+            <x-section>
                 <x-slot:title>{{ $this->buildLabel($group) }}</x-slot:title>
 
                 <div class="grid grid-cols-6 gap-6">
                     @foreach($fields as $field => $config)
-                        <div class="col-span-6 sm:col-span-4" wire:key="field-{{ $field }}">
+                        <div class="col-span-6 sm:col-span-4">
                             @if($this->isRegular($config))
-                                <x-form.field :name="$field" :config="$config" />
+                                <x-form.field :name="$field" :config="$config" wire:key="field-{{ $group }}-{{ $field }}" />
                             @else
-                                <livewire:is :component="$this->componentName($config)" :name="$field" :config="$config" />
+                                <livewire:is :component="$this->componentName($config)" :name="$field" :config="$config" wire:key="field-{{ $group }}-{{ $field }}" />
                             @endif
                         </div>
                     @endforeach
@@ -21,10 +21,10 @@
         @endforeach
 
         @for($i = 1; $i < 10; $i++)
-            <x-section group="spell-level-{{ $i }}">
+            <x-section>
                 <x-slot:title>Spell Level {{ $i }}</x-slot:title>
 
-                <livewire:form.spell-level-field :number="$i" />
+                <livewire:form.spell-level-field :number="$i" wire:key="group-spell-level-{{ $i }}" />
             </x-section>
 
             @if($i < 9)
