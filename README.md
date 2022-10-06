@@ -10,11 +10,12 @@ The eventual real version probably won't use PHP/Laravel. This currently exists 
 - Profile photos
 - Two-factor authentication
 - Teams, implemented as games
+- Dashboard with character listing
+- Individual character sheets
 
 ### Planned features
 
-- Dashboard with character listing
-- Individual character sheets w/fast finding for fields (D&D only at the moment)
+- Fast finding for fields on character sheet
 - Individual dice roller
 - Dice roller linked to character sheet stats
 - Combat tracker w/DM and player interfaces
