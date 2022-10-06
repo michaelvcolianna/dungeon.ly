@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Form;
 
 use App\Models\Character;
 use App\Models\SpellList;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class SpellListField extends Component
@@ -45,10 +46,18 @@ class SpellListField extends Component
     /**
      * Handle updates to data.
      *
+     * @param  string  $name
+     * @param  mixed  $value
      * @return void
      */
-    public function updated()
+    public function updated($name, $value)
     {
+        if(empty($value))
+        {
+            $name = Str::replace('spell_list.', '', $name);
+            $this->spell_list->{$name} = null;
+        }
+
         $this->spell_list->save();
     }
 }

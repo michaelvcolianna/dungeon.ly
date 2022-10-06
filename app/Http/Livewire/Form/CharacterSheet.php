@@ -101,7 +101,11 @@ class CharacterSheet extends Component
      */
     public function updated($name, $value)
     {
-        // @todo Convert empties into nulls
+        if(empty($value))
+        {
+            $name = Str::replace('character.', '', $name);
+            $this->character->{$name} = null;
+        }
 
         $this->character->save();
     }

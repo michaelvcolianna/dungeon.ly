@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Form;
 
 use App\Models\Character;
 use App\Models\SavingThrow;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class SavingThrowField extends Component
@@ -56,10 +57,18 @@ class SavingThrowField extends Component
     /**
      * Handle updates to data.
      *
+     * @param  string  $name
+     * @param  mixed  $value
      * @return void
      */
-    public function updated()
+    public function updated($name, $value)
     {
+        if(empty($value))
+        {
+            $name = Str::replace('saving_throw.', '', $name);
+            $this->saving_throw->{$name} = null;
+        }
+
         $this->saving_throw->save();
     }
 }

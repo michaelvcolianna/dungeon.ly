@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Form;
 
 use App\Models\Character;
 use App\Models\Skill;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class SkillField extends Component
@@ -56,10 +57,18 @@ class SkillField extends Component
     /**
      * Handle updates to data.
      *
+     * @param  string  $name
+     * @param  mixed  $value
      * @return void
      */
-    public function updated()
+    public function updated($name, $value)
     {
+        if(empty($value))
+        {
+            $name = Str::replace('skill.', '', $name);
+            $this->skill->{$name} = null;
+        }
+
         $this->skill->save();
     }
 }

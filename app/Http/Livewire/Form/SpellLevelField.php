@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Form;
 
 use App\Models\Character;
 use App\Models\SpellLevel;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class SpellLevelField extends Component
@@ -46,10 +47,18 @@ class SpellLevelField extends Component
     /**
      * Handle updates to data.
      *
+     * @param  string  $name
+     * @param  mixed  $value
      * @return void
      */
-    public function updated()
+    public function updated($name, $value)
     {
+        if(empty($value))
+        {
+            $name = Str::replace('spell_level.', '', $name);
+            $this->spell_level->{$name} = null;
+        }
+
         $this->spell_level->save();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Form;
 
 use App\Models\Character;
 use App\Models\Weapon;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class WeaponField extends Component
@@ -47,10 +48,18 @@ class WeaponField extends Component
     /**
      * Handle updates to data.
      *
+     * @param  string  $name
+     * @param  mixed  $value
      * @return void
      */
-    public function updated()
+    public function updated($name, $value)
     {
+        if(empty($value))
+        {
+            $name = Str::replace('weapon.', '', $name);
+            $this->weapon->{$name} = null;
+        }
+
         $this->weapon->save();
     }
 }

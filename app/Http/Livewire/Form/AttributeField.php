@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Form;
 
 use App\Models\Attribute;
 use App\Models\Character;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class AttributeField extends Component
@@ -46,10 +47,19 @@ class AttributeField extends Component
     /**
      * Handle updates to data.
      *
+     * @param  string  $name
+     * @param  mixed  $value
      * @return void
      */
-    public function updated()
+    public function updated($name, $value)
     {
+        if(empty($value))
+        {
+            $name = Str::replace('attribute.', '', $name);
+            $this->attribute->{$name} = null;
+        }
+
         $this->attribute->save();
     }
+
 }
