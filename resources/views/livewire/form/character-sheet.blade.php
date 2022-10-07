@@ -1,36 +1,22 @@
 @if($character)
     <div class="grid gap-4">
         @foreach($groups as $group => $fields)
-            <x-section>
+            <x-section id="group-{{ $group }}">
                 <x-slot:title>{{ $this->buildLabel($group) }}</x-slot:title>
 
-                <div class="grid grid-cols-6 gap-6">
+                <div class="grid gap-6">
                     @foreach($fields as $field => $config)
-                        <div class="col-span-6 sm:col-span-4">
-                            @if($this->isRegular($config))
-                                <x-form.field :name="$field" :config="$config" wire:key="field-{{ $group }}-{{ $field }}" />
-                            @else
-                                <livewire:is :component="$this->componentName($config)" :name="$field" :config="$config" wire:key="field-{{ $group }}-{{ $field }}" />
-                            @endif
-                        </div>
+                        @if($this->isRegular($config))
+                            <x-form.field :group="$group" :name="$field" :config="$config" wire:key="field-{{ $group }}-{{ $field }}" />
+                        @else
+                            <livewire:is :component="$this->componentName($config)" :name="$field" :config="$config" wire:key="field-{{ $group }}-{{ $field }}" />
+                        @endif
                     @endforeach
                 </div>
             </x-section>
 
             <x-jet-section-border />
         @endforeach
-
-        @for($i = 1; $i < 10; $i++)
-            <x-section>
-                <x-slot:title>Spell Level {{ $i }}</x-slot:title>
-
-                <livewire:form.spell-level-field :number="$i" wire:key="group-spell-level-{{ $i }}" />
-            </x-section>
-
-            @if($i < 9)
-                <x-jet-section-border />
-            @endif
-        @endfor
     </div>
 @else
     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">

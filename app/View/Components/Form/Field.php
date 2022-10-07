@@ -13,6 +13,7 @@ class Field extends Component
     public $config;
 
     /** @var string */
+    public $domId;
     public $label;
     public $model;
     public $name;
@@ -21,18 +22,25 @@ class Field extends Component
     /**
      * Create a new component instance.
      *
+     * @param  string  $group
      * @param  string  $name
-     * @param  array  $config
+     * @param  string  $label
+     * @param  string  $model
      * @param  string  $type
+     * @param  array  $config
      * @return void
      */
-    public function __construct($name, $config)
+    public function __construct($group = null, $name = null, $label = null, $model = null, $type = null, $config = [])
     {
         $this->config = $config;
-        $this->label = $this->buildLabel($name, $config);
-        $this->model = implode('.', ['character', $name]);
+        $this->domId = $group && $name
+            ? sprintf('%s-%s', $group, $name)
+            : md5(time())
+            ;
+        $this->label = $label ?? $this->buildLabel($name, $config);
+        $this->model = $model ?? implode('.', ['character', $name]);
         $this->name = $name;
-        $this->type = $config['type'];
+        $this->type = $type ?? $config['type'];
     }
 
     /**

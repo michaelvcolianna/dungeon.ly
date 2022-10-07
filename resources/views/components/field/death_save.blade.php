@@ -1,4 +1,4 @@
-<div class="grid grid-cols-2 gap-6 items-center">
+<div class="grid grid-cols-2 gap-6 items-center" id="combat-death_save_{{ strtolower($config['label']) }}">
     <span class="block font-medium text-sm text-gray-700">Death Save {{ $config['label'] }}</span>
 
     <div class="grid grid-cols-3 gap-3">
