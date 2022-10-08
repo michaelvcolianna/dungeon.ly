@@ -12,10 +12,10 @@ The eventual real version probably won't use PHP/Laravel. This currently exists 
 - Teams, implemented as games
 - Dashboard with character listing
 - Individual character sheets
+- Fast finding for fields on character sheet, as well as keyboard navigation through the groups
 
 ### Planned features
 
-- Fast finding for fields on character sheet
 - Individual dice roller
 - Dice roller linked to character sheet stats
 - Combat tracker w/DM and player interfaces
