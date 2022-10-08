@@ -1,22 +1,26 @@
 @if($character)
-    <div class="grid gap-4">
-        @foreach($groups as $group => $fields)
-            <x-section id="group-{{ $group }}">
-                <x-slot:title>{{ $this->buildLabel($group) }}</x-slot:title>
+    <div>
+        <x-form.finder />
 
-                <div class="grid gap-6">
-                    @foreach($fields as $field => $config)
-                        @if($this->isRegular($config))
-                            <x-form.field :group="$group" :name="$field" :config="$config" wire:key="field-{{ $group }}-{{ $field }}" />
-                        @else
-                            <livewire:is :component="$this->componentName($config)" :name="$field" :config="$config" wire:key="field-{{ $group }}-{{ $field }}" />
-                        @endif
-                    @endforeach
-                </div>
-            </x-section>
+        <div class="grid gap-4">
+            @foreach($groups as $group => $fields)
+                <x-section id="group-{{ $group }}">
+                    <x-slot:title>{{ $this->buildLabel($group) }}</x-slot:title>
 
-            <x-jet-section-border />
-        @endforeach
+                    <div class="grid gap-6">
+                        @foreach($fields as $field => $config)
+                            @if($this->isRegular($config))
+                                <x-form.field :group="$group" :name="$field" :config="$config" wire:key="field-{{ $group }}-{{ $field }}" />
+                            @else
+                                <livewire:is :component="$this->componentName($config)" :name="$field" :config="$config" wire:key="field-{{ $group }}-{{ $field }}" />
+                            @endif
+                        @endforeach
+                    </div>
+                </x-section>
+
+                <x-jet-section-border />
+            @endforeach
+        </div>
     </div>
 @else
     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
