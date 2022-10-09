@@ -21,13 +21,31 @@ class Character extends BaseModel
     ];
 
     /**
+     * Get the user that owns the character.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the team (game) that the character is a part of.
+     */
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
+
+    /**
      * Get the current character.
      *
      * @return \App\Models\Character
      */
     public static function fromSession()
     {
-        if($id = session()->get('character_id'))
+        $gameId = sprintf('characters.%s', auth()->user()->currentTeam->id);
+
+        if($id = session()->get($gameId))
         {
             return static::withTrashed()->find($id);
         }

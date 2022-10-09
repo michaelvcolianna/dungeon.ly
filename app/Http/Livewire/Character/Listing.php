@@ -44,9 +44,13 @@ class Listing extends Component
      */
     public function addCharacter()
     {
+        // Get current user
+        $user = auth()->user();
+
         // Create the overall empty character
         $character = Character::create([
-            'user_id' => auth()->user()->id,
+            'user_id' => $user->id,
+            'team_id' => $user->currentTeam->id,
         ]);
 
         // Create the empty attributes and saving throws
@@ -153,7 +157,9 @@ class Listing extends Component
      */
     public function chooseCharacter($id)
     {
-        session()->put('character_id', $id);
+        session()->put('characters', [
+            auth()->user()->currentTeam->id => $id,
+        ]);
 
         return redirect()->route('character');
     }

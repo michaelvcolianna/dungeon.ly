@@ -7,13 +7,15 @@ window.Alpine = Alpine
 Alpine.start()
 
 /**
- * Capitalize the first letter of a string
+ * Capitalize the first letters of words in a string
  *
  * @param  string  string
  * @return string
  */
 const capitalize = (string) => {
-  return `${string.charAt(0).toUpperCase()}${string.slice(1)}`
+  return (string + '').replace(/^([a-z])|\s+([a-z])/g, ($1) => {
+    return $1.toUpperCase()
+  })
 }
 
 /**

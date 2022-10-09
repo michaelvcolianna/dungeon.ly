@@ -26,7 +26,9 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -64,6 +66,6 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function characters()
     {
-        return $this->hasMany(Character::class);
+        return $this->hasMany(Character::class)->where('team_id', $this->currentTeam->id);
     }
 }

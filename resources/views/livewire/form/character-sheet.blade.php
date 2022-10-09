@@ -30,7 +30,7 @@
             </div>
 
             <div class="mt-6 text-gray-500">
-                It looks like you haven't chosen a character from the dashboard.
+                It looks like you haven't chosen a character for this game from the dashboard.
             </div>
 
             <div class="mt-6">

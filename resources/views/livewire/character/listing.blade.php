@@ -6,9 +6,9 @@
 
         <div class="mt-6 text-gray-500">
             @if($this->hasCharacters())
-                This is a list of your characters.
+                This is a list of your characters for this game.
             @else
-                You don't have any characters yet.
+                You don't have any characters for this game yet.
             @endif
         </div>
 

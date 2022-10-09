@@ -21,6 +21,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes(); # NPC status
             $table->foreignId('user_id');
+            $table->foreignId('team_id');
 
             foreach(config('fields.character') as $fields)
             {
