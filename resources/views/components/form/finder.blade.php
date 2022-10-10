@@ -1,6 +1,10 @@
 <div class="mb-12 grid md:flex justify-center md:justify-between items-center">
     <div class="block font-medium text-sm text-gray-700">
-        <span class="block md:hidden">
+        <span class="block md:hidden mb-4">
+            Swipe left/right to quickly navigate between groups.
+            <br />
+            Press and hold to clear group navigation and open the fast field finder.
+            <br />
             Use the finder below to quickly locate a field.
         </span>
 

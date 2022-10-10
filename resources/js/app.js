@@ -1,10 +1,14 @@
 import './bootstrap'
 
+import 'hammerjs'
+
 import Alpine from 'alpinejs'
+import Hammer from 'hammerjs'
 
 window.Alpine = Alpine
 
 Alpine.start()
+
 
 /**
  * Capitalize the first letters of words in a string
@@ -63,9 +67,55 @@ const navigateGroup = (direction) => {
   document.querySelector(newId).scrollIntoView();
 }
 
+/**
+ * Clear the navigation and scroll to top
+ *
+ * @return void
+ */
+const clearNavigation = () => {
+  updateHash(null)
+  window.scrollTo(0, 0)
+}
+
+/**
+ * Activate the fast field finder
+ *
+ * @return void
+ */
+const activateFinder = () => {
+  clearNavigation()
+
+  let finder = document.querySelector('#finder')
+
+  finder.focus()
+  finder.select()
+}
+
 if(typeof groups !== 'undefined') {
+  const body = document.querySelector('main')
   const finder = document.querySelector('#finder')
   const finderFields = document.querySelector('#finder-fields')
+  const hammertime = new Hammer(body)
+
+  /**
+   * Handle swipe events for group navigation
+   */
+  hammertime.on('swipe', (event) => {
+    document.activeElement.blur()
+
+    let direction = event.direction === 2
+      ? -1
+      : 1
+
+    navigateGroup(direction)
+  })
+
+  /**
+   * Handle press events for activating the fast field finder
+   */
+  hammertime.on('press', (event) => {
+    activateFinder()
+  })
 
   /**
    * Handle keyup events
@@ -79,11 +129,7 @@ if(typeof groups !== 'undefined') {
     if(!formEls.includes(event.target.tagName.toLowerCase())) {
       // Focus on the fast field finder
       if(event.key === '=') {
-        finder.focus()
-        finder.select()
-
-        // @todo Is this necessary?
-        updateHash(null)
+        activateFinder()
       }
 
       if(event.key === '[') {
@@ -95,8 +141,7 @@ if(typeof groups !== 'undefined') {
       }
 
       if(event.key === '\\') {
-        updateHash(null)
-        window.scrollTo(0, 0)
+        clearNavigation()
       }
     }
   }
@@ -136,6 +181,7 @@ if(typeof groups !== 'undefined') {
     // input field and blur it
     if(option) {
       document.querySelector('#' + option.dataset.field).scrollIntoView()
+
       finder.value = null
       finder.blur()
     }
