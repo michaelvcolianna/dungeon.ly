@@ -28,7 +28,19 @@ class GameList extends Component
      */
     public function render()
     {
-        return view('livewire.character.game-list');
+        return view('livewire.character.game-list', [
+            'characters' => $this->characters(),
+        ]);
+    }
+
+    /**
+     * Get all characters for the game.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function characters()
+    {
+        return $this->game->characters;
     }
 
     /**

@@ -78,7 +78,7 @@ if(typeof groups !== 'undefined') {
     // Only take action when outside an input
     if(!formEls.includes(event.target.tagName.toLowerCase())) {
       // Focus on the fast field finder
-      if(event.key === '/') {
+      if(event.key === '=') {
         finder.focus()
         finder.select()
 

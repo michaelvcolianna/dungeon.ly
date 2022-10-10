@@ -14,8 +14,8 @@
     </div>
 
     @if($this->hasCharacters())
-        <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
-            @foreach($game->characters as $character)
+        <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2" wire:poll>
+            @foreach($characters as $character)
                 <div class="p-6" wire:key="character-{{ $character->id }}">
                     <div class="text-sm font-bold ml-12 text-gray-500">
                         {{ $character->user->name }}

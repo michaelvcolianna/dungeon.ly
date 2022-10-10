@@ -9,7 +9,7 @@
             <br />
             Pressing the <x-code>\</x-code> key will clear group navigation and scroll to the top.
             <br />
-            Pressing the <x-code>/</x-code> key will open the fast field finder.
+            Pressing the <x-code>=</x-code> key will open the fast field finder.
         </span>
     </div>
 
