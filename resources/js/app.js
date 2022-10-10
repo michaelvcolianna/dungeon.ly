@@ -85,10 +85,12 @@ const clearNavigation = () => {
 const activateFinder = () => {
   clearNavigation()
 
-  let finder = document.querySelector('#finder')
+  setTimeout(() => {
+    let finder = document.querySelector('#finder')
 
-  finder.focus()
-  finder.select()
+    finder.focus()
+    finder.select()
+  }, 195)
 }
 
 if(typeof groups !== 'undefined') {
