@@ -16,6 +16,19 @@ use Livewire\Component;
 
 class Listing extends Component
 {
+    /** @var string */
+    public $game;
+
+    /**
+     * Create a new component instance.
+     *
+     * @return void
+     */
+    public function mount()
+    {
+        $this->game = auth()->user()->currentTeam->name;
+    }
+
     /**
      * Get the view / contents that represent the component.
      *
@@ -31,7 +44,6 @@ class Listing extends Component
      *
      * @return boolean
      */
-
     public function hasCharacters()
     {
         return auth()->user()->characters->isNotEmpty();

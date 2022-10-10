@@ -18,6 +18,12 @@ Route::get('/', function () {
         ? redirect()->route('dashboard')
         : view('welcome')
     ;
+})->name('welcome');
+
+Route::get('/clear', function() {
+    session()->invalidate();
+
+    return redirect()->route('welcome');
 });
 
 Route::middleware([

@@ -66,6 +66,6 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function characters()
     {
-        return $this->hasMany(Character::class)->where('team_id', $this->currentTeam->id);
+        return $this->hasMany(Character::class)->withTrashed()->where('team_id', $this->currentTeam->id);
     }
 }

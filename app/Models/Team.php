@@ -44,6 +44,8 @@ class Team extends JetstreamTeam
 
     /**
      * Get the characters for the team.
+     *
+     * @note Not using withTrashed() to skip NPCs.
      */
     public function characters()
     {

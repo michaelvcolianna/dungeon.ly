@@ -21,6 +21,9 @@ class CharacterSheet extends Component
     /** @var array */
     public $groups;
 
+    /** @var string */
+    public $game;
+
     /**
      * Dynamically generate the validation rules.
      *
@@ -39,7 +42,7 @@ class CharacterSheet extends Component
     public function mount()
     {
         $this->character = Character::fromSession();
-
+        $this->game = auth()->user()->currentTeam->name;
         $this->groups = config('fields.character');
     }
 
@@ -108,5 +111,25 @@ class CharacterSheet extends Component
         }
 
         $this->character->save();
+    }
+
+    /**
+     * Determines if the character can be an NPC.
+     *
+     * @return boolean
+     */
+    public function canBeNpc()
+    {
+        return $this->character->user->ownsTeam($this->character->team);
+    }
+
+    /**
+     * Toggle the character's NPC status.
+     *
+     * @return void
+     */
+    public function toggleObject()
+    {
+        $this->character->toggle();
     }
 }

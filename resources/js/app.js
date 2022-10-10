@@ -63,7 +63,7 @@ const navigateGroup = (direction) => {
   document.querySelector(newId).scrollIntoView();
 }
 
-if(groups) {
+if(typeof groups !== 'undefined') {
   const finder = document.querySelector('#finder')
   const finderFields = document.querySelector('#finder-fields')
 

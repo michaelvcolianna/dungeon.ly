@@ -3,6 +3,16 @@
         <x-form.finder />
 
         <div class="grid gap-4">
+            @if($this->canBeNpc())
+                <x-section id="group-npc">
+                    <x-slot:title>NPC Status</x-slot:title>
+
+                    <div class="grid gap-6">
+                        <x-field.checkbox name="deleted_at" label="Is an NPC" :checked="$character->is_npc" />
+                    </div>
+                </x-section>
+            @endif
+
             @foreach($groups as $group => $fields)
                 <x-section id="group-{{ $group }}">
                     <x-slot:title>{{ $this->buildLabel($group) }}</x-slot:title>
@@ -30,7 +40,7 @@
             </div>
 
             <div class="mt-6 text-gray-500">
-                It looks like you haven't chosen a character for this game from the dashboard.
+                It looks like you haven't chosen a character for {{ $game }} from the dashboard.
             </div>
 
             <div class="mt-6">
