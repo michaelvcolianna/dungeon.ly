@@ -12,7 +12,9 @@ The eventual real version probably won't use PHP/Laravel. This currently exists 
 - Teams, implemented as games
 - Dashboard with character listing
 - Individual character sheets
-- Fast finding for fields on character sheet, as well as keyboard navigation through the groups
+- Fast finding for fields on character sheet
+- Keyboard navigation through the character sheet groups and fast finder activation on desktop
+- Swipe navigation through the character sheet groups and fast finder activation via press on touch devices
 
 ### Planned features
 
