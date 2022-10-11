@@ -6,6 +6,12 @@
             </a>
         </x-slot>
 
+        @if(session('teamInvitation'))
+            <h4 class="mb-4">
+                Register or <a class="underline text-gray-600 hover:text-gray-900" href="{{ route('login') }}" >login</a> to join the game <strong class="text-red-800">{{ session('teamInvitation') }}</strong>.
+            </h4>
+        @endif
+
         <x-jet-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('register') }}">
