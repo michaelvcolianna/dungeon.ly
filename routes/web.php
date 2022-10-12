@@ -31,11 +31,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-    Route::get('/character', function () {
-        return view('character');
-    })->name('character');
+    Route::view('/dashboard', 'dashboard')->name('dashboard');
+    Route::view('/character', 'character')->name('character');
+    Route::view('/dice', 'dice')->name('dice');
 });

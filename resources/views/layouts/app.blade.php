@@ -40,6 +40,12 @@
             </main>
         </div>
 
+        <div hidden>
+            <span id="label-external">Opens in a new tab or window</span>
+
+            <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+        </div>
+
         @stack('modals')
 
         @livewireScripts
