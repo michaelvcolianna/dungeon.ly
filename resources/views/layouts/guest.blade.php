@@ -9,6 +9,23 @@
 
         <link rel="icon" href="{{ asset('favicon.svg') }}">
 
+        @if(Request::routeIs('welcome'))
+            <link rel="canonical" href="{{ $url }}">
+            <meta name="title" content="{{ $title }}" />
+            <meta name="description" content="{{ $description }}" />
+            <meta name="image" content="{{ $image }}" />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="{{ $url }}" />
+            <meta property="og:title" content="{{ $title }}" />
+            <meta property="og:description" content="{{ $description }}" />
+            <meta property="og:image" content="{{ $image }}" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:url" content="{{ $url }}" />
+            <meta name="twitter:title" content="{{ $title }}" />
+            <meta name="twitter:description" content="{{ $description }}" />
+            <meta name="twitter:image" content="{{ $image }}" />
+        @endif
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=alegreya:400,400i,600,600i,700,700i" rel="stylesheet" />
