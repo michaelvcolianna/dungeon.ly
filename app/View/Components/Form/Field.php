@@ -35,7 +35,7 @@ class Field extends Component
         $this->config = $config;
         $this->domId = $group && $name
             ? sprintf('%s-%s', $group, $name)
-            : md5(time())
+            : md5(time() . $model)
             ;
         $this->label = $label ?? $this->buildLabel($name, $config);
         $this->model = $model ?? implode('.', ['character', $name]);

@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 gap-6">
+<div class="grid grid-cols-1 gap-6" wire:ignore>
     <x-form.field type="text" label="Cantrips" model="spell_list.cantrips" group="magic" name="cantrips" />
 
     <hr />
