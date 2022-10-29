@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 gap-6" wire:ignore.self>
+<div class="grid grid-cols-1 gap-6">
     <input type="hidden" wire:model="character.{{ $name }}" />
 
     <div x-data="{ {{ $name }}_name: null, {{ $name }}_preview: null }">

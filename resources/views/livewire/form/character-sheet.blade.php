@@ -4,7 +4,7 @@
 
         <div class="grid gap-4">
             @if($this->canBeNpc())
-                <x-section id="group-npc">
+                <x-section id="group-npc" wire:ignore>
                     <x-slot:title>NPC Status</x-slot:title>
 
                     <div class="grid gap-6">
