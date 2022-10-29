@@ -18,8 +18,13 @@
             @csrf
 
             <div>
+                <x-jet-label for="register_password" value="{{ __('Register Password') }}" />
+                <x-jet-input id="register_password" class="block mt-1 w-full" type="text" name="register_password" :value="old('register_password')" required autofocus autocomplete="off" />
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autocomplete="name" />
             </div>
 
             <div class="mt-4">

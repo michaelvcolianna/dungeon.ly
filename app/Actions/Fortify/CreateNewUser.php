@@ -23,6 +23,14 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
+            'register_password' => [
+                'required',
+                function($attribute, $value, $fail) {
+                    if(!Hash::check($value, env('APP_REGISTER_PASSWORD'))) {
+                        $fail('The register password is incorrect.');
+                    }
+                },
+            ],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
