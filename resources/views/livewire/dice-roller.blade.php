@@ -1,29 +1,42 @@
-<div class="grid gap-6 md:gap-0">
+<div class="grid md:grid-cols-2 gap-6 md:gap-x-8">
     @if($results)
-        <x-section id="group-results" wire:key="group-results">
+        <x-jet-section class="md:col-span-2">
             <x-slot:title>Results History</x-slot:title>
             <x-slot:description>
-                <div>Refresh the page to clear or <a class="cursor-pointer underline text-gray-600 hover:text-gray-900" wire:click="clearHistory">use this link</a>.</div>
+                <div>Refresh the page to clear, or <button class="cursor-pointer underline text-gray-600 hover:text-gray-900" wire:click="clearHistory">use this link</button>.</div>
             </x-slot:description>
 
-            <div class="grid gap-2">
-                @foreach($results as $i => $result)
-                    <div class="grid grid-cols-3 gap-4 items-start" wire:key="result-{{ $i }}">
-                        <div class="leading-tight">{!! $result['details'] !!}</div>
-                        <div><strong>Total:</strong> {{ $result['total'] }}</div>
+            <div class="grid gap-2 mt-6">
+                @foreach(array_reverse($results) as $result)
+                    <div class="grid sm:grid-cols-3 sm:gap-4 items-start" wire:key="result-{{ $loop->index }}">
+                        <div class="text-gray-700">{!! $result['details'] !!}</div>
+                        <div class="text-xl"><strong>Total:</strong> {{ $result['total'] }}</div>
                         <div class="justify-self-end text-sm text-gray-300">{{ $result['datetime'] }}</div>
                     </div>
                 @endforeach
             </div>
-        </x-section>
-
-        <x-jet-section-border />
+        </x-jet-section>
     @endif
 
-    <x-section id="dice-roller">
+    <x-jet-section>
+        <x-slot:title>Common Rolls</x-slot:title>
+        <x-slot:description>
+            <div>These are some common "simple" rolls, but a more comprehensive roller is below.</div>
+        </x-slot:description>
+
+        <div class="mt-4 flex flex-wrap gap-4 justify-center md:justify-start">
+            <x-jet-button wire:click="roll('d20')">Check/To Hit</x-jet-button>
+            <x-jet-button wire:click="roll('2d20h1')">Check/To Hit @ Advantage</x-jet-button>
+            <x-jet-button wire:click="roll('2d20l1')">Check/To Hit @ Disadvantage</x-jet-button>
+            <x-jet-button wire:click="roll('d%')">Percentage</x-jet-button>
+            <x-jet-button wire:click="roll('4d6r<1h3')">Stat Gen</x-jet-button>
+        </div>
+    </x-jet-section>
+
+    <x-jet-section>
         <x-slot:title>Dice Roller</x-slot:title>
         <x-slot:description>
-            <div>For a simple roll, enter the quantity and type (plus optional modifier). Alternatively, you can use the <a class="underline text-gray-600 hover:text-gray-900" href="https://github.com/ringmaster/dicecalc#dice-expressions" target="_blank" aria-describedby="label-external">dice expressions here</a> <x-svg.external class="h-3 w-3 inline" /> in the text field to roll something complicated.</div>
+            <div>For a simple roll, enter the quantity and type (plus optional modifier). Alternatively, you can use the <a class="underline text-gray-600 hover:text-gray-900" href="https://github.com/ringmaster/dicecalc#dice-expressions" target="_blank" aria-describedby="label-external">dice expressions here</a> in the text field to roll something complicated.</div>
 
             <div class="mt-2">Examples:
                 <ul class="list-disc pl-4 grid gap-2">
@@ -38,29 +51,29 @@
             </div>
         </x-slot:description>
 
-        <form class="grid grid-cols-3 gap-4" wire:submit.prevent="roll">
-            <x-form.field group="dice" name="quantity" model="quantity" label="Quantity" type="string" wire:key="dice-quantity" />
+        <form class="grid grid-cols-3 gap-4 mt-6" wire:submit.prevent="roll">
+            <x-jet-field.string label="Quantity" model="quantity" />
 
             <div class="grid grid-cols-1 gap-6" id="dice-type">
                 <label class="block">
                     <span class="block font-medium text-sm text-gray-700">Type</span>
                     <select wire:model="type" wire:key="dice-type" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm appearance-none focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         @foreach($types as $value)
-                            <option value="{{ $value }}">{{ $value }}</option>
+                            <option wire:key="value-{{ $loop->index }}" value="{{ $value }}">{{ $value }}</option>
                         @endforeach
                     </select>
                 </label>
             </div>
 
-            <x-form.field group="dice" name="modifier" model="modifier" label="Modifier" type="string" wire:key="dice-modifier" />
+            <x-jet-field.string label="Modifier" model="modifier" />
 
             <div class="col-span-3" id="dice-expression">
-                <x-form.field group="dice" name="expression" model="expression" label="Expression" type="string" wire:key="dice-expression" />
+                <x-jet-field.string label="Expression" model="expression" />
             </div>
 
             <div class="col-span-3" id="dice-submit">
                 <x-jet-button>Roll</x-jet-button>
             </div>
         </form>
-    </x-section>
+    </x-jet-section>
 </div>

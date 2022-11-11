@@ -2,22 +2,27 @@
 
 namespace App\Models;
 
-class Attribute extends BaseModel
+use App\Traits\BelongsToCharacter;
+use Illuminate\Database\Eloquent\Model;
+
+class Attribute extends Model
 {
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'label',
+    use BelongsToCharacter;
+
+    /** @var array */
+    const DEFINITION = [
+        'strength',
+        'dexterity',
+        'constitution',
+        'intelligence',
+        'wisdom',
+        'charisma',
     ];
 
     /**
-     * Get the character that has the attribute.
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
      */
-    public function character()
-    {
-        return $this->belongsTo(Character::class);
-    }
+    protected $guarded = [];
 }

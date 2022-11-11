@@ -12,8 +12,14 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Alegreya', ...defaultTheme.fontFamily.serif],
+                sans: ['Alegreya Sans', ...defaultTheme.fontFamily.sans],
+                serif: ['Alegreya', ...defaultTheme.fontFamily.serif],
+                mono: ['Overpass Mono', ...defaultTheme.fontFamily.mono],
             },
+        },
+        screens: {
+            'xs': '480px',
+            ...defaultTheme.screens,
         },
     },
 

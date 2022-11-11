@@ -6,17 +6,17 @@
         <div class="mt-10 sm:mt-0">
             <x-jet-form-section submit="addTeamMember">
                 <x-slot name="title">
-                    {{ __('Add Player') }}
+                    {{ __('Add Team Member') }}
                 </x-slot>
 
                 <x-slot name="description">
-                    {{ __('Add a new player to your game.') }}
+                    {{ __('Add a new team member to your team, allowing them to collaborate with you.') }}
                 </x-slot>
 
                 <x-slot name="form">
                     <div class="col-span-6">
                         <div class="max-w-xl text-sm text-gray-600">
-                            {{ __('Please provide the email address of the player you would like to add to this game.') }}
+                            {{ __('Please provide the email address of the person you would like to add to this team.') }}
                         </div>
                     </div>
 
@@ -81,11 +81,11 @@
         <div class="mt-10 sm:mt-0">
             <x-jet-action-section>
                 <x-slot name="title">
-                    {{ __('Pending Invitations') }}
+                    {{ __('Pending Team Invitations') }}
                 </x-slot>
 
                 <x-slot name="description">
-                    {{ __('These players have been invited to your game and have been sent an invitation email. They may join by accepting the email invitation.') }}
+                    {{ __('These people have been invited to your team and have been sent an invitation email. They may join the team by accepting the email invitation.') }}
                 </x-slot>
 
                 <x-slot name="content">
@@ -118,11 +118,11 @@
         <div class="mt-10 sm:mt-0">
             <x-jet-action-section>
                 <x-slot name="title">
-                    {{ __('Players') }}
+                    {{ __('Team Members') }}
                 </x-slot>
 
                 <x-slot name="description">
-                    {{ __('All of the players that are part of this game.') }}
+                    {{ __('All of the people that are part of this team.') }}
                 </x-slot>
 
                 <!-- Team Member List -->
@@ -215,11 +215,11 @@
     <!-- Leave Team Confirmation Modal -->
     <x-jet-confirmation-modal wire:model="confirmingLeavingTeam">
         <x-slot name="title">
-            {{ __('Leave Game') }}
+            {{ __('Leave Team') }}
         </x-slot>
 
         <x-slot name="content">
-            {{ __('Are you sure you would like to leave this game?') }}
+            {{ __('Are you sure you would like to leave this team?') }}
         </x-slot>
 
         <x-slot name="footer">
@@ -236,11 +236,11 @@
     <!-- Remove Team Member Confirmation Modal -->
     <x-jet-confirmation-modal wire:model="confirmingTeamMemberRemoval">
         <x-slot name="title">
-            {{ __('Remove Player') }}
+            {{ __('Remove Team Member') }}
         </x-slot>
 
         <x-slot name="content">
-            {{ __('Are you sure you would like to remove this player from the game?') }}
+            {{ __('Are you sure you would like to remove this person from the team?') }}
         </x-slot>
 
         <x-slot name="footer">

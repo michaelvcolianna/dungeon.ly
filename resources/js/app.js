@@ -1,26 +1,11 @@
 import './bootstrap'
 
-import 'hammerjs'
-
 import Alpine from 'alpinejs'
 import Hammer from 'hammerjs'
 
 window.Alpine = Alpine
 
 Alpine.start()
-
-
-/**
- * Capitalize the first letters of words in a string
- *
- * @param  string  string
- * @return string
- */
-const capitalize = (string) => {
-  return (string + '').replace(/^([a-z])|\s+([a-z])/g, ($1) => {
-    return $1.toUpperCase()
-  })
-}
 
 /**
  * Update the location hash
@@ -46,11 +31,13 @@ const updateHash = (hash) => {
  * @return void
  */
 const navigateGroup = (direction) => {
-  const currentId = location.hash.replace('#group-', '')
-  const currentIdx = groups.indexOf(currentId)
+  const groups = Array.from(document.querySelectorAll('[data-group-label]')).map(el => {
+    return `#${el.id}`
+  })
+  const oldIdx = groups.indexOf(location.hash)
 
   // Ensure the new index is within range
-  let newIdx = parseInt(currentIdx) + parseInt(direction)
+  let newIdx = parseInt(oldIdx) + parseInt(direction)
   if(newIdx > groups.length - 1) {
     newIdx = 0
   }
@@ -58,13 +45,13 @@ const navigateGroup = (direction) => {
     newIdx = groups.length - 1
   }
 
-  const newId = `#group-${groups[newIdx]}`
+  const newGroup = groups[newIdx]
 
   // Update the URL
-  updateHash(newId)
+  updateHash(newGroup)
 
   // Scroll the area into view
-  document.querySelector(newId).scrollIntoView();
+  document.querySelector(newGroup).scrollIntoView();
 }
 
 /**
@@ -93,9 +80,11 @@ const activateFinder = () => {
   }, 195)
 }
 
-if(typeof groups !== 'undefined') {
+const finder = document.querySelector('#finder')
+
+if(finder) {
+  const fields = document.querySelectorAll('[data-field-label]')
   const body = document.querySelector('main')
-  const finder = document.querySelector('#finder')
   const finderFields = document.querySelector('#finder-fields')
   const hammertime = new Hammer(body)
 
@@ -149,28 +138,6 @@ if(typeof groups !== 'undefined') {
   }
 
   /**
-   * Build fast finder field listing
-   */
-  groups.forEach(group => {
-    document.querySelectorAll('[id^="' + group + '-"]').forEach(el => {
-      // Self-inflicted nonsense for making the datalist options
-      const id = el.getAttribute('id')
-      const parts = id.split('-')
-      const group = parts[0].replaceAll('_', ' ')
-      const name = parts[1].replaceAll('_', ' ')
-      const field = `${capitalize(name)} (${capitalize(group)})`
-
-      // Create the option element
-      const option = document.createElement('option')
-      option.value = field
-      option.dataset.field = id
-
-      // Add the element to the datalist
-      finderFields.appendChild(option)
-    })
-  })
-
-  /**
    * Handle finder field input
    */
   finder.onchange = () => {
@@ -182,10 +149,32 @@ if(typeof groups !== 'undefined') {
     // If the change resulted in a chosen option, scroll to it, then clear the
     // input field and blur it
     if(option) {
-      document.querySelector('#' + option.dataset.field).scrollIntoView()
+      document.querySelector('[data-field-label="' + option.value + '"]').scrollIntoView()
 
       finder.value = null
       finder.blur()
     }
   }
+
+  /**
+   * Build fast finder field listing
+   */
+  fields.forEach(field => {
+    // Self-inflicted nonsense for making the datalist options
+    const label = field.dataset.fieldLabel;
+
+    // Create the option element
+    const option = document.createElement('option')
+    option.value = label
+
+    // Add the element to the datalist
+    finderFields.appendChild(option)
+  })
 }
+
+/**
+ * Scroll to top after roll
+ */
+Livewire.on('roll', () => {
+  window.scrollTo(0, 0)
+})

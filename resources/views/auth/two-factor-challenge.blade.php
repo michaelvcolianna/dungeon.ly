@@ -1,11 +1,5 @@
 <x-guest-layout>
     <x-jet-authentication-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-svg.deltohedron class="h-16 w-16 text-red-700" />
-            </a>
-        </x-slot>
-
         <div x-data="{ recovery: false }">
             <div class="mb-4 text-sm text-gray-600" x-show="! recovery">
                 {{ __('Please confirm access to your account by entering the authentication code provided by your authenticator application.') }}

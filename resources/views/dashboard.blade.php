@@ -5,7 +5,5 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <x-dashboard />
-    </div>
+    <div>meow</div>
 </x-app-layout>

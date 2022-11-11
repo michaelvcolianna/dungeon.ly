@@ -16,8 +16,8 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link href="{{ route('character') }}" :active="request()->routeIs('character')">
-                        {{ __('Character') }}
+                    <x-jet-nav-link href="{{ route('characters.listing') }}" :active="request()->routeIs('characters.*')">
+                        {{ __('Characters') }}
                     </x-jet-nav-link>
 
                     <x-jet-nav-link href="{{ route('dice') }}" :active="request()->routeIs('dice')">
@@ -47,17 +47,17 @@
                                 <div class="w-60">
                                     <!-- Team Management -->
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Manage Game') }}
+                                        {{ __('Manage Team') }}
                                     </div>
 
                                     <!-- Team Settings -->
                                     <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
-                                        {{ __('Game Settings') }}
+                                        {{ __('Team Settings') }}
                                     </x-jet-dropdown-link>
 
                                     @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
                                         <x-jet-dropdown-link href="{{ route('teams.create') }}">
-                                            {{ __('Create New Game') }}
+                                            {{ __('Create New Team') }}
                                         </x-jet-dropdown-link>
                                     @endcan
 
@@ -65,7 +65,7 @@
 
                                     <!-- Team Switcher -->
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Switch Games') }}
+                                        {{ __('Switch Teams') }}
                                     </div>
 
                                     @foreach (Auth::user()->allTeams() as $team)
@@ -149,8 +149,8 @@
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
 
-            <x-jet-responsive-nav-link href="{{ route('character') }}" :active="request()->routeIs('character')">
-                {{ __('Character') }}
+            <x-jet-responsive-nav-link href="{{ route('characters.listing') }}" :active="request()->routeIs('characters.*')">
+                {{ __('Characters') }}
             </x-jet-responsive-nav-link>
 
             <x-jet-responsive-nav-link href="{{ route('dice') }}" :active="request()->routeIs('dice')">
@@ -200,17 +200,17 @@
                     <div class="border-t border-gray-200"></div>
 
                     <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Manage Game') }}
+                        {{ __('Manage Team') }}
                     </div>
 
                     <!-- Team Settings -->
                     <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" :active="request()->routeIs('teams.show')">
-                        {{ __('Game Settings') }}
+                        {{ __('Team Settings') }}
                     </x-jet-responsive-nav-link>
 
                     @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
                         <x-jet-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.create')">
-                            {{ __('Create New Game') }}
+                            {{ __('Create New Team') }}
                         </x-jet-responsive-nav-link>
                     @endcan
 
@@ -218,7 +218,7 @@
 
                     <!-- Team Switcher -->
                     <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Switch Games') }}
+                        {{ __('Switch Teams') }}
                     </div>
 
                     @foreach (Auth::user()->allTeams() as $team)

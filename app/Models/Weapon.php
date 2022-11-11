@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
-class Weapon extends BaseModel
+use App\Traits\BelongsToCharacter;
+use Illuminate\Database\Eloquent\Model;
+
+class Weapon extends Model
 {
+    use BelongsToCharacter;
+
     /**
-     * Get the character that has the weapon.
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
      */
-    public function character()
-    {
-        return $this->belongsTo(Character::class);
-    }
+    protected $guarded = [];
 }

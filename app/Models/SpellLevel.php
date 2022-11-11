@@ -2,13 +2,25 @@
 
 namespace App\Models;
 
-class SpellLevel extends BaseModel
+use App\Traits\BelongsToCharacter;
+use Illuminate\Database\Eloquent\Model;
+
+class SpellLevel extends Model
 {
+    use BelongsToCharacter;
+
     /**
-     * Get the list that has the spell level.
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
      */
-    public function spellList()
+    protected $guarded = [];
+
+    /**
+     * Get the spells associated with this level.
+     */
+    public function spells()
     {
-        return $this->belongsTo(SpellList::class);
+        return $this->hasMany(Spell::class);
     }
 }

@@ -1,59 +1,29 @@
-<div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-    <div class="p-6 sm:px-20 bg-white">
-        <div class="mt-8 text-2xl">
-            Characters
-        </div>
+<div class="grid gap-8 md:gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    @if($characters->isNotEmpty())
+        @foreach($characters as $character)
+            <div class="grid gap-4 grid-cols-[50px,1fr] sm:grid-cols-none items-start bg-white p-4 shadow-lg sm:rounded-lg" wire:key="character-{{ $character->id }}">
+                <div class="col-span-full sm:col-auto font-bold text-left text-xl">{{ $character->display_name }}</div>
 
-        <div class="mt-6 text-gray-500">
-            @if($this->hasCharacters())
-                This is a list of your characters in {{ $game }}.
-            @else
-                You don't have any characters for {{ $game }} yet.
-            @endif
-        </div>
-
-        <div class="mt-6">
-            <x-jet-button wire:click="addCharacter">Add One</x-jet-button>
-        </div>
-    </div>
-
-    @if($this->hasCharacters())
-        <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
-            @foreach($this->allCharacters() as $character)
-                <div class="p-6" wire:key="character-{{ $character->id }}">
-                    <div class="flex items-center">
-                        @if($character->avatar_url)
-                            <img src="{{ $character->avatar_url }}" alt="{{ $character->name ?? 'Unnamed' }}'s avatar" height="24" width="24" class="w-8 h-8 rounded-full" />
-                        @else
-                            <x-svg.image class="w-8 h-8 text-gray-400" />
-                        @endif
-
-                        <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">{{ $character->character_name ?? 'Unnamed' }}</div>
-                    </div>
-
-                    <div class="ml-12">
-                        <div class="mt-2 text-sm text-gray-500">
-                            Created {{ $character->created_at->diffForHumans() }}
-                        </div>
-
-                        <div class="mt-2 text-sm text-gray-500">
-                            {{ $character->class_level ?? 'Unknown class / level' }} ({{ $character->race ?? 'Unknown race' }})
-                        </div>
-
-                        <div class="mt-2 text-sm text-gray-500">
-                            {{ $this->attributeSummary($character->attributes) }}
-                        </div>
-
-                        <button class="mt-3 flex items-center text-sm font-semibold text-indigo-700" wire:click="chooseCharacter({{ $character->id }})">
-                            <div>Manage character</div>
-
-                            <div class="ml-1 text-indigo-500">
-                                <x-svg.arrow class="w-4 h-4" />
-                            </div>
-                        </button>
-                    </div>
+                <div class="w-full sm:w-2/3 md:w-1/2">
+                    @if($character->avatar_url)
+                        <img src="{{ $character->avatar_url }}" alt="{{ $character->display_name }}'s avatar" height="0" width="0" class="w-full h-1/2 object-cover rounded-full" />
+                    @else
+                        <x-svg.default-image class="w-full h-auto text-slate-300" />
+                    @endif
                 </div>
-            @endforeach
-        </div>
+
+                <div class="grid text-slate-500 text-sm md:text-base">
+                    <span>Created {{ $character->created_at->diffForHumans() }}</span>
+                    <span>{{ $character->display_class_level }} ({{ $character->display_race }})</span>
+                    <span>{{ $this->attributesSummary($character) }}</span>
+                </div>
+
+                <div class="col-span-full sm:col-auto text-right sm:text-left">
+                    <x-jet-link-button :href="$character->url" class="gap-2 h-8">View/manage character</x-jet-link-button>
+                </div>
+            </div>
+        @endforeach
+    @else
+        <div class="italic text-slate-700 text-lg">Looks like you don't have any characters yet.</div>
     @endif
 </div>

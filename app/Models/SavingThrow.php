@@ -2,37 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\BelongsToCharacter;
+use Illuminate\Database\Eloquent\Model;
 
-class SavingThrow extends BaseModel
+class SavingThrow extends Model
 {
-    use SoftDeletes;
+    use BelongsToCharacter;
 
     /**
-     * The accessors to append to the model's array form.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $appends = [
-        'is_proficient',
-        'label',
-    ];
-
-    /**
-     * Get the proficient status.
-     *
-     * @return boolean
-     */
-    public function getIsProficientAttribute()
-    {
-        return $this->trashed();
-    }
-
-    /**
-     * Get the character that has the saving throw.
-     */
-    public function character()
-    {
-        return $this->belongsTo(Character::class);
-    }
+    protected $guarded = [];
 }

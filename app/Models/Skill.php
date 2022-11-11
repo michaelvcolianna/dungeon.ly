@@ -2,52 +2,39 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\BelongsToCharacter;
+use Illuminate\Database\Eloquent\Model;
 
-class Skill extends BaseModel
+class Skill extends Model
 {
-    use SoftDeletes;
+    use BelongsToCharacter;
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'is_proficient',
-        'label',
-        'display_label',
+    /** @var array */
+    const DEFINITION = [
+        'acrobatics' => 'Dex',
+        'animal_handling' => 'Wis',
+        'arcana' => 'Int',
+        'athletics' => 'Str',
+        'deception' => 'Cha',
+        'history' => 'Int',
+        'insight' => 'Wis',
+        'intimidation' => 'Cha',
+        'investigation' => 'Int',
+        'medicine' => 'Wis',
+        'nature' => 'Int',
+        'perception' => 'Wis',
+        'performance' => 'Cha',
+        'persuasion' => 'Cha',
+        'religion' => 'Int',
+        'sleight_hand' => 'Dex',
+        'stealth' => 'Dex',
+        'survival' => 'Wis',
     ];
 
     /**
-     * Get the proficient status.
+     * The attributes that aren't mass assignable.
      *
-     * @return boolean
+     * @var array
      */
-    public function getIsProficientAttribute()
-    {
-        return $this->trashed();
-    }
-
-    /**
-     * Get the character that has the skill.
-     */
-    public function character()
-    {
-        return $this->belongsTo(Character::class);
-    }
-
-    /**
-     * Get the display label.
-     *
-     * @return string
-     */
-    public function getDisplayLabelAttribute()
-    {
-        $label = config(sprintf('fields.character.skills.%s.label', $this->name))
-            ?? $this->label
-        ;
-
-        return sprintf('%s (%s)', $label, $this->attribute);
-    }
+    protected $guarded = [];
 }

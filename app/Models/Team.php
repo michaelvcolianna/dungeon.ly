@@ -41,14 +41,4 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
-
-    /**
-     * Get the characters for the team.
-     *
-     * @note Not using withTrashed() to skip NPCs.
-     */
-    public function characters()
-    {
-        return $this->hasMany(Character::class);
-    }
 }

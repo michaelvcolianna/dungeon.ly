@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Character;
+use App\Models\Dice;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
     return (auth()->user())
         ? redirect()->route('dashboard')
         : view('welcome')
@@ -30,8 +32,21 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
-])->group(function () {
+])->group(function() {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
-    Route::view('/character', 'character')->name('character');
+
+    Route::group(['as' => 'characters.', 'prefix' => 'characters'], function() {
+        Route::view('/', 'characters')->name('listing');
+        Route::get('/{id}', function($id) {
+            $character = Character::find($id);
+
+            abort_unless($character->user_id === auth()->id(), 401);
+
+            return view('character-sheet', [
+                'character' => $character,
+            ]);
+        })->name('sheet');
+    });
+
     Route::view('/dice', 'dice')->name('dice');
 });

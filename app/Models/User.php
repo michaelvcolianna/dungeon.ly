@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -18,6 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasProfilePhoto;
     use HasTeams;
     use Notifiable;
+    use SoftDeletes;
     use TwoFactorAuthenticatable;
 
     /**
@@ -26,10 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var string[]
      */
     protected $fillable = [
-        'name',
-        'email',
-        'email_verified_at',
-        'password',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -67,6 +66,16 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function characters()
     {
-        return $this->hasMany(Character::class)->withTrashed()->where('team_id', $this->currentTeam->id);
+        return $this->hasMany(Character::class)->where('team_id', $this->currentTeam->id);
+    }
+
+    /**
+     * Whether the user owns their current team.
+     *
+     * @return boolean
+     */
+    public function ownsCurrentTeam()
+    {
+        return $this->ownsTeam($this->currentTeam);
     }
 }

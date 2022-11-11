@@ -23,10 +23,10 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'register_password' => [
+            'registration_key' => [
                 'required',
                 function($attribute, $value, $fail) {
-                    if(!Hash::check($value, env('APP_REGISTER_PASSWORD'))) {
+                    if(!Hash::check($value, env('APP_REGISTRATION_KEY'))) {
                         $fail('The register password is incorrect.');
                     }
                 },
@@ -42,7 +42,6 @@ class CreateNewUser implements CreatesNewUsers
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
-                'email_verified_at' => session('teamInvitation') ? now() : null,
             ]), function (User $user) {
                 $this->createTeam($user);
             });
@@ -59,7 +58,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         $user->ownedTeams()->save(Team::forceCreate([
             'user_id' => $user->id,
-            'name' => explode(' ', $user->name, 2)[0]."'s Game",
+            'name' => explode(' ', $user->name, 2)[0]."'s Team",
             'personal_team' => true,
         ]));
     }
