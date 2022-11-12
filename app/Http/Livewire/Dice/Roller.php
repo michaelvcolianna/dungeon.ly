@@ -34,7 +34,8 @@ class Roller extends Component
 
         $this->emit('rollResult', [
             'for' => 'General Roll',
-            ...$roll,
+            'total' => $roll['total'],
+            'details' => $roll['details'],
         ]);
     }
 }

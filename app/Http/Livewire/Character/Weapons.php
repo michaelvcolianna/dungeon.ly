@@ -67,7 +67,8 @@ class Weapons extends Component
 
         $this->emit('rollResult', [
             'for' => 'Attack',
-            ...$roll,
+            'total' => $roll['total'],
+            'details' => $roll['details'],
         ]);
     }
 
@@ -79,7 +80,8 @@ class Weapons extends Component
 
         $this->emit('rollResult', [
             'for' => 'Damage',
-            ...$roll,
+            'total' => $roll['total'],
+            'details' => $roll['details'],
         ]);
     }
 }

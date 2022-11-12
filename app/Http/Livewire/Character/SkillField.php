@@ -45,7 +45,8 @@ class SkillField extends Component
 
         $this->emit('rollResult', [
             'for' => $this->label,
-            ...$roll,
+            'total' => $roll['total'],
+            'details' => $roll['details'],
         ]);
     }
 }

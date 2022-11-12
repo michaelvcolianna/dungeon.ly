@@ -44,7 +44,8 @@ class Combat extends Component
 
         $this->emit('rollResult', [
             'for' => 'Initiative',
-            ...$roll,
+            'total' => $roll['total'],
+            'details' => $roll['details'],
         ]);
     }
 }

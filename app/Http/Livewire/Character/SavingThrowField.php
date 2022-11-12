@@ -41,7 +41,8 @@ class SavingThrowField extends Component
 
         $this->emit('rollResult', [
             'for' => sprintf('%s Save', $this->label),
-            ...$roll,
+            'total' => $roll['total'],
+            'details' => $roll['details'],
         ]);
     }
 }

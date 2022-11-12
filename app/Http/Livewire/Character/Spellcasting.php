@@ -39,7 +39,8 @@ class Spellcasting extends Component
 
         $this->emit('rollResult', [
             'for' => 'Spell Attack',
-            ...$roll,
+            'total' => $roll['total'],
+            'details' => $roll['details'],
         ]);
     }
 }
