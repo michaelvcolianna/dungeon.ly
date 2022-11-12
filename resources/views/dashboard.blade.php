@@ -5,5 +5,5 @@
         </h2>
     </x-slot>
 
-    <div>meow</div>
+    <em class="block text-4xl italic">Nothing yet.</em>
 </x-app-layout>
