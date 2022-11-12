@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Character;
 
+use App\Models\Dice;
 use App\Models\SavingThrow;
 use Livewire\Component;
 
@@ -32,5 +33,15 @@ class SavingThrowField extends Component
     public function updated()
     {
         $this->saving_throw->save();
+    }
+
+    public function roll()
+    {
+        $roll = Dice::roll(modifier: $this->saving_throw->value);
+
+        $this->emit('rollResult', [
+            'for' => sprintf('%s Save', $this->label),
+            ...$roll,
+        ]);
     }
 }

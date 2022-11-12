@@ -5,5 +5,5 @@
         </h2>
     </x-slot>
 
-    <livewire:dice-roller />
+    <livewire:dice.roller />
 </x-app-layout>

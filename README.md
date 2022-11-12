@@ -16,10 +16,10 @@ The eventual real version probably won't use PHP/Laravel. This currently exists 
 - Keyboard navigation through the character sheet groups and fast finder activation on desktop
 - Swipe navigation through the character sheet groups and fast finder activation via press on touch devices
 - Individual dice roller
+- Dice roller linked to character sheet stats
 
 ### Planned features
 
-- Dice roller linked to character sheet stats
 - Combat tracker w/DM and player interfaces
 - Map maker, allowing for uploading of map images & overlaying the graph + FOW (actual map builder like on Roll20/etc. might come later)
 - Chat interface for entire game and for private in-game chats

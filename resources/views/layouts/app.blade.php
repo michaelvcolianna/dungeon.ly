@@ -22,6 +22,8 @@
     <body class="font-serif">
         <x-jet-banner />
 
+        <livewire:dice.results />
+
         <div class="min-h-screen bg-slate-50">
             @livewire('navigation-menu')
 

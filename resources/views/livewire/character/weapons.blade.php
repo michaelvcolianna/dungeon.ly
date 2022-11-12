@@ -16,12 +16,16 @@
                 </div>
 
                 <div class="order-3 col-span-2 sm:col-auto sm:order-2">
-                    <x-jet-label class="sm:sr-only" for="weapon.{{ $weapon->id }}.attack_bonus" value="Weapon #{{ $loop->iteration }} Attack Bonus" />
+                    <x-jet-label class="sm:sr-only" for="weapon.{{ $weapon->id }}.attack_bonus">
+                        <x-shared.roll-label label="Weapon #{{ $loop->iteration }} Attack Bonus" method="rollAttackBonus({{ $wid }})" />
+                    </x-jet-label>
                     <x-jet-input rel="field" id="weapon.{{ $weapon->id }}.attack_bonus" class="block mt-1 w-full" type="text" wire:model.debounce.500ms="weapons.{{ $wid }}.attack_bonus" />
                 </div>
 
                 <div class="order-4 col-span-2 sm:col-auto sm:order-3">
-                    <x-jet-label class="sm:sr-only" for="weapon.{{ $weapon->id }}.damage_type" value="Weapon #{{ $loop->iteration }} Damage/Type" />
+                    <x-jet-label class="sm:sr-only" for="weapon.{{ $weapon->id }}.damage_type">
+                        <x-shared.roll-label label="Weapon #{{ $loop->iteration }} Damage/Type" method="rollDamage({{ $wid }})" />
+                    </x-jet-label>
                     <x-jet-input rel="field" id="weapon.{{ $weapon->id }}.damage_type" class="block mt-1 w-full" type="text" wire:model.debounce.500ms="weapons.{{ $wid }}.damage_type" />
                 </div>
 

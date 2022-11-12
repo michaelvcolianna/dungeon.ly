@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Character;
 
+use App\Models\Dice;
 use App\Models\Skill;
 use Livewire\Component;
 
@@ -36,5 +37,15 @@ class SkillField extends Component
     public function updated()
     {
         $this->skill->save();
+    }
+
+    public function roll()
+    {
+        $roll = Dice::roll(modifier: $this->skill->value);
+
+        $this->emit('rollResult', [
+            'for' => $this->label,
+            ...$roll,
+        ]);
     }
 }

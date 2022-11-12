@@ -1,5 +1,7 @@
-<div class="grid grid-cols-3 gap-4 sm:grid-cols-2 sm:gap-y-0" data-field-label="{{ $label }}">
-    <span class="mt-9 sm:mt-0 block font-medium text-sm text-gray-700 sm:col-span-2">{{ $label }}</span>
+<div class="grid grid-cols-3 gap-4 sm:grid-cols-2 sm:gap-y-0 relative" data-field-label="{{ $label }}">
+    <div class="mt-7 sm:mt-0 sm:col-span-2">
+        <x-shared.roll-label :label="$label" />
+    </div>
 
     <div>
         <x-jet-label for="{{ $idBase }}.value">

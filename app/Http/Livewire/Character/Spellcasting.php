@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Character;
 
+use App\Models\Dice;
 use App\Traits\HasCharacter;
 use Livewire\Component;
 
@@ -30,5 +31,15 @@ class Spellcasting extends Component
     public function updated()
     {
         $this->character->save();
+    }
+
+    public function rollSpellAttack()
+    {
+        $roll = Dice::roll(modifier: $this->character->spell_attack_bonus);
+
+        $this->emit('rollResult', [
+            'for' => 'Spell Attack',
+            ...$roll,
+        ]);
     }
 }

@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Dice;
 
 use App\Models\Dice;
 use Livewire\Component;
 
-class DiceRoller extends Component
+class Roller extends Component
 {
-    public $results;
     public $types = ['d2', 'd4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100'];
 
     public $quantity;
@@ -23,21 +22,19 @@ class DiceRoller extends Component
 
     public function render()
     {
-        return view('livewire.dice-roller');
+        return view('livewire.dice.roller');
     }
 
     public function roll($method = null)
     {
-        $this->results[] = $method
+        $roll = $method
             ? Dice::{$method}()
             : Dice::roll(quantity: $this->quantity, type: $this->type, modifier: $this->modifier, expression: $this->expression)
         ;
 
-        $this->emit('roll');
-    }
-
-    public function clearHistory()
-    {
-        $this->results = [];
+        $this->emit('rollResult', [
+            'for' => 'General Roll',
+            ...$roll,
+        ]);
     }
 }

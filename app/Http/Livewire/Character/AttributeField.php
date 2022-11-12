@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Character;
 
 use App\Models\Attribute;
+use App\Models\Dice;
 use Livewire\Component;
 
 class AttributeField extends Component
@@ -32,5 +33,15 @@ class AttributeField extends Component
     public function updated()
     {
         $this->attribute->save();
+    }
+
+    public function roll()
+    {
+        $roll = Dice::roll(modifier: $this->attribute->bonus);
+
+        $this->emit('rollResult', [
+            'for' => $this->label,
+            ...$roll,
+        ]);
     }
 }

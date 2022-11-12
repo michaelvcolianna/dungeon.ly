@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Character;
 
+use App\Models\Dice;
 use App\Models\Weapon;
 use App\Traits\HasCharacter;
 use Illuminate\Database\Eloquent\Collection;
@@ -58,5 +59,27 @@ class Weapons extends Component
         list($wid, $property) = str($name)->explode('.');
 
         $this->weapons[$wid]->save();
+    }
+
+    public function rollAttackBonus($wid)
+    {
+        $roll = Dice::roll(modifier: $this->weapons[$wid]->attack_bonus);
+
+        $this->emit('rollResult', [
+            'for' => 'Attack',
+            ...$roll,
+        ]);
+    }
+
+    public function rollDamage($wid)
+    {
+        // Attempt to guess at this - ex: if people write 2d8+4 slashing
+        $damage = explode(' ', $this->weapons[$wid]->damage_type);
+        $roll = Dice::roll(expression: $damage[0]);
+
+        $this->emit('rollResult', [
+            'for' => 'Damage',
+            ...$roll,
+        ]);
     }
 }

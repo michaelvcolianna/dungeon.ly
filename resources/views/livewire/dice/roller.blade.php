@@ -1,23 +1,4 @@
 <div class="grid md:grid-cols-2 gap-6 md:gap-x-8">
-    @if($results)
-        <x-jet-section class="md:col-span-2">
-            <x-slot:title>Results History</x-slot:title>
-            <x-slot:description>
-                <div>Refresh the page to clear, or <button class="cursor-pointer underline text-gray-600 hover:text-gray-900" wire:click="clearHistory">use this link</button>.</div>
-            </x-slot:description>
-
-            <div class="grid gap-2 mt-6">
-                @foreach(array_reverse($results) as $result)
-                    <div class="grid sm:grid-cols-3 sm:gap-4 items-start" wire:key="result-{{ $loop->index }}">
-                        <div class="text-gray-700">{!! $result['details'] !!}</div>
-                        <div class="text-xl"><strong>Total:</strong> {{ $result['total'] }}</div>
-                        <div class="justify-self-end text-sm text-gray-300">{{ $result['datetime'] }}</div>
-                    </div>
-                @endforeach
-            </div>
-        </x-jet-section>
-    @endif
-
     <x-jet-section>
         <x-slot:title>Common Rolls</x-slot:title>
         <x-slot:description>

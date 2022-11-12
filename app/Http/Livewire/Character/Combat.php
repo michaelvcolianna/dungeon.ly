@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Character;
 
 use App\Models\Character;
+use App\Models\Dice;
 use App\Traits\HasCharacter;
 use Livewire\Component;
 
@@ -35,5 +36,15 @@ class Combat extends Component
     public function updated()
     {
         $this->character->save();
+    }
+
+    public function rollInitiative()
+    {
+        $roll = Dice::roll(modifier: $this->character->initiative);
+
+        $this->emit('rollResult', [
+            'for' => 'Initiative',
+            ...$roll,
+        ]);
     }
 }
